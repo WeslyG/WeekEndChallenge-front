@@ -8,11 +8,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { CustomMaterialModule } from './core/material.module';
 import 'hammerjs';
+import { UserComponent } from './user/user.component';
+import { LoginButtonComponent } from './login-button/login-button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    UserComponent,
+    LoginButtonComponent
   ],
   imports: [
     BrowserModule,
