@@ -5,18 +5,16 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LoginComponent } from './login/login.component';
-import { CustomMaterialModule } from './core/material.module';
+import { LoginComponent } from './components/login/login.component';
+import { CustomMaterialModule } from './material.module';
 import 'hammerjs';
-import { UserComponent } from './user/user.component';
-import { LoginButtonComponent } from './login-button/login-button.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    UserComponent,
-    LoginButtonComponent
+    UserComponent
   ],
   imports: [
     BrowserModule,

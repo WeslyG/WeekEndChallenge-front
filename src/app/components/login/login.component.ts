@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material'
+// import { MatDialog } from '@angular/material'
 
 @Component({
   selector: 'app-login',
@@ -25,5 +25,5 @@ export class LoginComponent implements OnInit {
     } else {
       alert("Invalid credentials");
     }
-
+  }
 }
