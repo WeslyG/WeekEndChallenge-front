@@ -9,6 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { CustomMaterialModule } from './material.module';
 import 'hammerjs';
 import { UserComponent } from './components/user/user.component';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { UserComponent } from './components/user/user.component';
     BrowserModule,
     AppRoutingModule,
     CustomMaterialModule,
+    HttpModule,
     FormsModule,
     BrowserAnimationsModule
   ],
