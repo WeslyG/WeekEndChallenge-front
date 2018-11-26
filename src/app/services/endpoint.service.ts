@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
-import { equalParamsAndUrlSegments } from '@angular/router/src/router_state';
 
 @Injectable({
   providedIn: 'root'
