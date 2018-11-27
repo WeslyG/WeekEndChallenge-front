@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "e128129d-0f5b-471e-8861-8ba0d9df95f7",
+		"name": "WeekEndChallenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"qwe\",\n\t\"name\": \"QWE\",\n\t\"password\":\"qwe\"\n}"
+						},
+						"url": {
+							"raw": "http://{{url}}/api/v1/register",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"qwe\",\n\t \"password\": \"qwe\"\n}"
+						},
+						"url": {
+							"raw": "http://{{url}}/api/v1/login",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "About Me info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InF3ZSIsIm5hbWUiOiJRV0UiLCJpZCI6IjViZmQ3OGJjYThkZjRlMGM2MGJkNjk4NiIsImlhdCI6MTU0MzMzODc3NH0.IeAVXBZTN5PWJahB6eWL9OhSYiD69RNXb7y1YRCC8Pk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{url}}/api/v1/user/me",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"me"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
+import  config from '../config/config';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,6 @@ export class EndpointService {
       params.append('password', password);
       const body = params.toString();
 
-      return this.http.post('http://localhost:3000/api/login', body, {headers: header});
+    return this.http.post(`${config.backend.backEndUrl}${config.backend.apiVersion}/login`, body, {headers: header});
   }
 }

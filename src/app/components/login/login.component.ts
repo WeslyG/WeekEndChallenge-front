@@ -16,11 +16,12 @@ export class LoginComponent {
   }
 
   // @Input() variav: string; - почитай про инпут
+  
   // типизировать
+  // забрать данные с формы
   email: string;
   password: string;
 
-  // забрать данные с формы
   login() {
     // let data: ILogin;
     // data.email
