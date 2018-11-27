@@ -1,5 +1,18 @@
-.login-card {
-    height: 250px;
-    width: 300px;
-    
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+mat-card-header,
+mat-form-field {
+  margin-bottom: 20px;
+}
+mat-card {
+  width: 300px;
+  text-align: center;
 }
