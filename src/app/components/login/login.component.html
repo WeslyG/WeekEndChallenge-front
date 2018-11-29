@@ -1,21 +1,34 @@
 <div class="wrapper">
-    <mat-card>
-      <mat-card-content>
-        <form>
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Login</mat-label>
-            <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
-          </mat-form-field>
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Password</mat-label>
-            <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
-          </mat-form-field>
-          <button mat-stroked-button (click)="login()" color="primary">Login</button>
-        </form>
-        <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
-      </mat-card-content>
-    </mat-card>
-    <div class="bg-wrapper">
-      <div class="background"></div>
-    </div>
+<mat-card>
+  <h2 mat-dialog-title>Вход</h2>
+<form class="form" [formGroup]="loginForm">
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Email" formControlName="email">
+    <mat-error *ngIf="!loginForm.get('email').hasError('email') && !loginForm.get('email').hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="!loginForm.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Password" formControlName="password">
+    <mat-error *ngIf="loginForm.get('password').hasError('required')">
+      Password is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+</form>
+<mat-dialog-actions class="full-width">
+  <div class="button" *ngIf="!isLoading">
+    <button mat-raised-button color="primary" [disabled]="!loginForm.valid" (click)="login(loginForm.value)">Войти</button>
+    <!-- <button mat-raised-button (click)="goToRegister()">Go to Registration</button> -->
+  </div>
+  <mat-spinner class="spinner" [diameter]="36" *ngIf="isLoading"></mat-spinner>
+</mat-dialog-actions>
+</mat-card>
+<div class="bg-wrapper">
+  <div class="background"></div>
+</div>
 </div>

@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'wishlist-front';
+
+  constructor() {}
 }
+
+// const auth = localStorage.getItem('AuthKey');

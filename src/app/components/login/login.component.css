@@ -5,6 +5,12 @@
   height: 92%;
   position: relative;
 }
+
+.full-width.mat-dialog-actions {
+  display: flex;
+  justify-content: center;
+}
+
 form {
   display: flex;
   flex-direction: column;

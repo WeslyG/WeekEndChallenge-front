@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+// import { MatSnackBar } from '@angular/material';
 import { AuthService } from 'src/app/services/auth.service';
-import { ILogin } from 'src/app/interfaces/login';
+import { LoginModel } from 'src/app/models/loginModel';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -9,26 +11,37 @@ import { ILogin } from 'src/app/interfaces/login';
   styleUrls: ['./login.component.css']
 })
 
+export class LoginComponent implements OnInit {
+  constructor(
+    private authService: AuthService,
+    private fb: FormBuilder,
+    // public snackBar: MatSnackBar,
+    private userService: UserService,
+    ) {}
 
-export class LoginComponent {
-
-  constructor(private router: Router, private authService: AuthService) {
+  loginForm: FormGroup;
+  isLoading = false;
+  
+  ngOnInit() {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
+    });
   }
 
-  // @Input() variav: string; - почитай про инпут
-  
-  // типизировать
-  // забрать данные с формы
-  email: string;
-  password: string;
-
-  login() {
-    // let data: ILogin;
-    // data.email
-    this.authService.login(this.email, this.password).subscribe((res: string) => {
-      alert(res);
-      //service.func....
-    })
-    // .subscube
+  login(value: LoginModel) {
+    this.isLoading = true;
+    this.authService.login(value)
+      .subscribe(() => {
+        this.userService.getUser().subscribe(userData => {
+          this.authService.saveUserDetails(userData);
+          // this.snackBar.open('Hello, ' + this.authService.User.name + '!', 'Ok', {
+          //   duration: 3000,
+          // });
+          this.isLoading = false;
+          // go to /me
+        })
+      });
   }
 }
+// @Input() variav: string; - почитай про инпут
