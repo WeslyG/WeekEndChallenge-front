@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: 'me', component: UserComponent, data: {
-    title: 'Пользователь'
+    title: 'Пользователь'}
   },
   // {
   //   path: '**', redirectTo: NotFoundComponent, pathMatch: 'full'
