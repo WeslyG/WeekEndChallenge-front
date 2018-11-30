@@ -3,3 +3,17 @@ mat-toolbar {
   background-color: #128a0ad1;
   color: #FFFFFF;
 }
+
+.example-spacer {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.title {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.mat-raised-button {
+  margin: 5px;
+}

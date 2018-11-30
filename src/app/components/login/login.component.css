@@ -14,13 +14,14 @@
 form {
   display: flex;
   flex-direction: column;
+  padding-top: 10px;
 }
 mat-card-header,
 mat-form-field {
   margin-bottom: 20px;
 }
 mat-card {
-  width: 300px;
+  width: 350px;
   text-align: center;
 }
 .background {

@@ -1,0 +1,10 @@
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+table {
+    margin-top: 3%;
+    width: 80%;
+}

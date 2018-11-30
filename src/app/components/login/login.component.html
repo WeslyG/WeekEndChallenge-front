@@ -1,34 +1,80 @@
 <div class="wrapper">
+
 <mat-card>
-  <h2 mat-dialog-title>Вход</h2>
-<form class="form" [formGroup]="loginForm">
-  <mat-form-field class="full-width">
-    <input matInput placeholder="Email" formControlName="email">
-    <mat-error *ngIf="!loginForm.get('email').hasError('email') && !loginForm.get('email').hasError('required')">
-      Please enter a valid email address
-    </mat-error>
-    <mat-error *ngIf="!loginForm.hasError('required')">
-      Email is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
+  
+<mat-tab-group>
+  <mat-tab label="Вход">
+    <form class="form" [formGroup]="loginForm">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Email" formControlName="email">
+        <mat-error *ngIf="!loginForm.get('email').hasError('email') && !loginForm.get('email').hasError('required')">
+          Пожалуйста введите валидный email
+        </mat-error>
+        <mat-error *ngIf="!loginForm.hasError('required')">
+          Email <strong>не введен</strong>
+        </mat-error>
+      </mat-form-field>
 
-  <mat-form-field class="full-width">
-    <input matInput placeholder="Password" formControlName="password">
-    <mat-error *ngIf="loginForm.get('password').hasError('required')">
-      Password is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Password" formControlName="password">
+        <mat-error *ngIf="loginForm.get('password').hasError('required')">
+          Пароль <strong>не введен</strong>
+        </mat-error>
+      </mat-form-field>
 
-</form>
-<mat-dialog-actions class="full-width">
-  <div class="button" *ngIf="!isLoading">
-    <button mat-raised-button color="primary" [disabled]="!loginForm.valid" (click)="login(loginForm.value)">Войти</button>
-    <!-- <button mat-raised-button (click)="goToRegister()">Go to Registration</button> -->
-  </div>
-  <mat-spinner class="spinner" [diameter]="36" *ngIf="isLoading"></mat-spinner>
-</mat-dialog-actions>
+    </form>
+    <mat-dialog-actions class="full-width">
+      <div class="button" *ngIf="!isLoading">
+        <button mat-raised-button color="primary" [disabled]="!loginForm.valid" (click)="login(loginForm.value)">Войти</button>
+      </div>
+      <mat-spinner class="spinner" [diameter]="36" *ngIf="isLoading"></mat-spinner>
+    </mat-dialog-actions>
+  </mat-tab>
+  
+  <!-- Registration -->
+  <mat-tab label="Регистрация"> 
+    <form class="form" [formGroup]="loginForm">
+      <mat-form-field class="full-width">
+
+        <!-- <input matInput placeholder="Имя" formControlName="name">
+        <mat-error *ngIf="!loginForm.hasError('required')">
+          Имя <strong>не введено</strong>
+        </mat-error> -->
+        <input matInput placeholder="Email" formControlName="email">
+        <mat-error *ngIf="!loginForm.get('email').hasError('email') && !loginForm.get('email').hasError('required')">
+          Пожалуйста введите валидный email
+        </mat-error>
+        <mat-error *ngIf="!loginForm.hasError('required')">
+          Email <strong>не введен</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Password" formControlName="password">
+        <mat-error *ngIf="loginForm.get('password').hasError('required')">
+          Пароль <strong>не введен</strong>
+        </mat-error>
+      </mat-form-field>
+
+    </form>
+    <mat-dialog-actions class="full-width">
+      <div class="button" *ngIf="!isLoading">
+        <button mat-raised-button color="primary" [disabled]="!loginForm.valid" (click)="login(loginForm.value)">Регистрация</button>
+      </div>
+      <mat-spinner class="spinner" [diameter]="36" *ngIf="isLoading"></mat-spinner>
+    </mat-dialog-actions>
+  </mat-tab>
+</mat-tab-group>
+  
 </mat-card>
+
+
+
+
+
 <div class="bg-wrapper">
   <div class="background"></div>
 </div>
 </div>
+
+<!-- <button mat-raised-button (click)="goToRegister()">Go to Registration</button> -->
