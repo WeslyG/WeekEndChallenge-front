@@ -4,6 +4,15 @@
   justify-content: center;
 }
 
+.mat-row:nth-child(2n + 1) {
+  background-color: #F2F2F2;
+}
+
+.mat-header-cell {
+  font-weight: 800;
+  font-size: 1.1em;
+}
+
 table {
     margin-top: 3%;
     width: 80%;
