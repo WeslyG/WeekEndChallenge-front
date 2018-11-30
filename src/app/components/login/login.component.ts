@@ -1,10 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
-// import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { LoginModel } from 'src/app/models/loginModel';
 import { UserService } from '../../services/user.service';
+import { RouteService } from 'src/app/services/route.service';
 
 @Component({
   selector: 'app-login',
@@ -18,10 +19,12 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     public snackBar: MatSnackBar,
     private userService: UserService,
+    private routeService: RouteService
     ) {}
 
   loginForm: FormGroup;
   isLoading = false;
+  router: Router;
   
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -42,7 +45,8 @@ export class LoginComponent implements OnInit {
             duration: 3000,
           });
           this.isLoading = false;
-          // this.router.navigateByUrl(url)
+          
+          this.routeService.redirectTo('/me');
           // this.router.navigate(['../', { id: crisisId, foo: 'foo' }], { relativeTo: this.route });
           // go to /me
         })

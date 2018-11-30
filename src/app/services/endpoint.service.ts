@@ -31,7 +31,7 @@ export class EndpointService {
   }
 
   private getAuthHeader(): RequestOptions {
-    const accessToken = this.LocalStorageService.getDataFromStorage(DbKeys.USER);
+    const accessToken = this.LocalStorageService.getDataFromStorage(DbKeys.ID_TOKEN);
     const headers = new Headers({ 'Authorization': 'Bearer ' + accessToken });
     return new RequestOptions({ headers: headers });
   }

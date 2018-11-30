@@ -16,6 +16,10 @@ const routes: Routes = [
     path: '', component: ScoreboardComponent, data: {
       title: 'Общий счет' }
   },
+  {
+    path: 'me', component: UserComponent, data: {
+    title: 'Пользователь'
+  },
   // {
   //   path: '**', redirectTo: NotFoundComponent, pathMatch: 'full'
   // }

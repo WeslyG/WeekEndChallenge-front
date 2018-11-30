@@ -1,6 +1,6 @@
 export default {
     backend: {
-        backEndUrl: 'http://localhost:3000',
+        backEndUrl: 'http://46.163.163.75:3000',
         apiVersion: '/api/v1'
     },
     elasticsearch: {

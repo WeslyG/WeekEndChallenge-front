@@ -21,14 +21,10 @@ export class AuthService {
     return this.endpointService.getLoginEndpoint(value.email, value.password).pipe(
       map((reponse: Response) => {
         const token = reponse.json().id_token;
-        this.saveUserDetails(token);
+        this.processLogin(token);
         return reponse.ok;
       })
     )}
-
-  // public saveUserDetails(data: string) {
-  //   this.localStorageService.saveDataToStorage('AuthToken', data);
-  // }
 
   public saveUserDetails(user: User) {
     this.localStorageService.saveDataToStorage(DbKeys.USER, JSON.stringify(user));
