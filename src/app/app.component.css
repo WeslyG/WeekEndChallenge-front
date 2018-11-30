@@ -1,19 +1,17 @@
 mat-toolbar {
-  /* background-color: #826253; */
-  background-color: #128a0ad1;
+  background-color: #523E46;
   color: #FFFFFF;
 }
 
-.example-spacer {
+mat-toolbar-row {
   display: flex;
-  flex: 1 1 auto;
+  justify-content: space-between;
 }
 
 .title {
   color: #FFFFFF;
   text-decoration: none;
 }
-
-.mat-raised-button {
-  margin: 5px;
+button:nth-child(1n) {
+  margin-right: 10px;
 }
