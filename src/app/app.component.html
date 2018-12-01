@@ -3,7 +3,16 @@
     <span><a href="/" class="title"> WeekEnd Challenge 2018</a></span>
     <div class="toolbar-ctr">
       <button mat-flat-button color="primary" routerLink="/tasks">Задачи</button>
-      <button mat-flat-button color="primary" routerLink="/login">Войти</button>
+      <span *ngIf="isLogin()">
+        <button mat-button [matMenuTriggerFor]="menu">{{userName()}}</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink="/me">Моя страница</button>
+          <button mat-menu-item (click)='logout()'>Выход</button>
+        </mat-menu>
+      </span>
+      <span *ngIf="!isLogin()">
+        <button mat-flat-button color="primary" routerLink="/login">Войти</button>
+      </span>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

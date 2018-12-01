@@ -17,8 +17,8 @@ export class LocalStorageService {
     }
     
     // clearLocalStorage() {
-    //     localStorage.removeItem('AuthToken');
-    //     // localStorage.clear();
+        // localStorage.removeItem('AuthToken');
+        // localStorage.clear();
     // }
 
     clearStorage() {

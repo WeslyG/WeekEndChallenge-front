@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { MatTabsModule } from '@angular/material';
 import { MatSnackBarModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatTabsModule, MatMenuModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -26,6 +26,7 @@ import { ScoreboardComponent } from './components/scoreboard/scoreboard.componen
     AppRoutingModule,
     CustomMaterialModule,
     HttpModule,
+    MatMenuModule,
     MatTabsModule,
     ReactiveFormsModule,
     FormsModule,
