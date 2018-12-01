@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from '@angular/common';
+import { MatGridListModule } from '@angular/material';
 import {
     MatButtonModule, MatCardModule, MatDialogModule, MatInputModule, MatTableModule,
     MatToolbarModule, MatMenuModule, MatIconModule, MatProgressSpinnerModule
@@ -14,6 +15,7 @@ import {
         MatDialogModule,
         MatTableModule,
         MatMenuModule,
+        MatGridListModule,
         MatIconModule,
         MatProgressSpinnerModule
     ],

@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { MatSnackBarModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTabsModule, MatMenuModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import 'hammerjs';
@@ -27,6 +29,7 @@ import { ScoreboardComponent } from './components/scoreboard/scoreboard.componen
     CustomMaterialModule,
     HttpModule,
     MatMenuModule,
+    MatGridListModule,
     MatTabsModule,
     ReactiveFormsModule,
     FormsModule,

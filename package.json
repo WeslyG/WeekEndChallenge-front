@@ -1,10 +1,10 @@
 {
-  "name": "wishlist-front",
-  "version": "0.0.0",
+  "name": "weekendchallenge",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "ng serve -o",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

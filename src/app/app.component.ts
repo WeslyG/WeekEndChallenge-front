@@ -9,7 +9,7 @@ import { DbKeys } from './services/db-keys'
 })
 
 export class AppComponent {
-  title = 'wishlist-front';
+  title = 'weekendchallenge';
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -31,7 +31,4 @@ export class AppComponent {
   public logout() {
     this.localStorageService.clearStorage();
   }
-
 }
-
-// const auth = localStorage.getItem('AuthKey');

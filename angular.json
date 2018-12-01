@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "wishlist-front": {
+    "weekendchallenge": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/wishlist-front",
+            "outputPath": "dist/weekendchallenge",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -58,18 +58,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "wishlist-front:build"
+            "browserTarget": "weekendchallenge:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "wishlist-front:build:production"
+              "browserTarget": "weekendchallenge:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "wishlist-front:build"
+            "browserTarget": "weekendchallenge:build"
           }
         },
         "test": {
@@ -104,7 +104,7 @@
         }
       }
     },
-    "wishlist-front-e2e": {
+    "weekendchallenge-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -113,11 +113,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "wishlist-front:serve"
+            "devServerTarget": "weekendchallenge:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "wishlist-front:serve:production"
+              "devServerTarget": "weekendchallenge:serve:production"
             }
           }
         },
@@ -133,5 +133,5 @@
       }
     }
   },
-  "defaultProject": "wishlist-front"
+  "defaultProject": "weekendchallenge"
 }

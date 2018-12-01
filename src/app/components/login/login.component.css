@@ -31,7 +31,7 @@ mat-card {
 .background {
   height: 400px;
   width: 400px;
-  background: url(../../../picture/background/bg-netbook.jpg);
+  background: url('../../../assets/img/bg-netbook.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;

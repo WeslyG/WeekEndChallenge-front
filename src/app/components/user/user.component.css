@@ -1,0 +1,9 @@
+.avatar {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    /* background-color: #523e4694; */
+    background-image: url('../../../assets/img/bg-santa-sleep.jpg');
+    background-position: 19% 36%;
+    
+}
