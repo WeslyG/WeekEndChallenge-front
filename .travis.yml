@@ -9,10 +9,11 @@ before_install:
   - app_version=$(node -e "console.log(require('./package.json').version);")
   - app_name=$(node -e "console.log(require('./package.json').name);")
   - version_prefix=$(git log -1 --format="%H"| head -c 6)
+  - author_name="$(git log -1 $TRAVIS_COMMIT --pretty="%aN")"
 
 install:
   # I am started!
-  - curl -XPOST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&parse_mode=MARKDOWN&text=Начинаю сборку версии ${app_version}"
+  - curl -XPOST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&parse_mode=MARKDOWN&text=Начинаю сборку ${app_name} версии ${app_version}-${version_prefix}\\n ${author_name} завез нам - ${TRAVIS_COMMIT_MESSAGE}"
   - npm install
   - npm run build
 script:
@@ -23,4 +24,4 @@ script:
   - docker push $docker_user/$app_name:$app_version-$version_prefix
   - docker push $docker_user/$app_name:latest
   # I am finished!
-  - curl -XPOST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage?chat_id={ХTELEGRAM_CHAT_ID}&parse_mode=MARKDOWN&text=Успешно собрал ${app_name} версии ${app_version}"
+  - curl -XPOST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage?chat_id=${ХTELEGRAM_CHAT_ID}&parse_mode=MARKDOWN&text=Успешно собрал ${app_name} версии ${app_version}-${version_prefix}! \\n Контейнеры тут - https://hub.docker.com/rhttps://hub.docker.com/r/${docker_user}/${app_name}"
