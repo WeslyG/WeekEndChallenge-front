@@ -9,8 +9,10 @@ before_install:
   - app_version=$(node -e "console.log(require('./package.json').version);")
   - app_name=$(node -e "console.log(require('./package.json').name);")
   - version_prefix=$(git log -1 --format="%H"| head -c 6)
+
 install:
   # I am started!
+  - curl -XPOST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&parse_mode=MARKDOWN&text=Начинаю сборку версии ${app_version}"
   - npm install
   - npm run build
 script:
@@ -21,3 +23,4 @@ script:
   - docker push $docker_user/$app_name:$app_version-$version_prefix
   - docker push $docker_user/$app_name:latest
   # I am finished!
+  - curl -XPOST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage?chat_id={ХTELEGRAM_CHAT_ID}&parse_mode=MARKDOWN&text=Успешно собрал ${app_name} версии ${app_version}"
