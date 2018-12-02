@@ -15,7 +15,7 @@ install:
   - npm run build
 script:
   - docker build -t $docker_user/$app_name:$app_version-$version_prefix .
-  - docker tag $docker_user/$app_name:$app_version weslyg/$app_name:latest
+  - docker tag $docker_user/$app_name:$app_version-$version_prefix weslyg/$app_name:latest
   - docker images
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - docker push $docker_user/$app_name:$app_version-$version_prefix
