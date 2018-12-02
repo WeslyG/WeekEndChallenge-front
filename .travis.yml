@@ -1,0 +1,23 @@
+sudo: required
+services:
+ - docker
+language: node_js
+node_js:
+  - "10.14.1"
+before_install:
+  - docker_user="weslyg"
+  - app_version=$(node -e "console.log(require('./package.json').version);")
+  - app_name=$(node -e "console.log(require('./package.json').name);")
+  - version_prefix=$(git log -1 --format="%H"| head -c 6)
+install:
+  # I am started!
+  - npm install
+  - npm run build
+script:
+  - docker build -t $docker_user/$app_name:$app_version-$version_prefix .
+  - docker tag $docker_user/$app_name:$app_version weslyg/$app_name:latest
+  - docker images
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker push $docker_user/$app_name:$app_version-$version_prefix
+  - docker push $docker_user/$app_name:latest
+  # I am finished!
