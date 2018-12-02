@@ -15,6 +15,8 @@ import { CustomMaterialModule } from './material.module';
 import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './components/login/login.component';
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { ScoreboardComponent } from './components/scoreboard/scoreboard.componen
     ReactiveFormsModule,
     FormsModule,
     MatSnackBarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
