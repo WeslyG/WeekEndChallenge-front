@@ -5,14 +5,14 @@ language: node_js
 node_js:
   - "10.14.1"
 before_install:
+  - commit=$(git log -1 --format="%H")
   - app_version=$(node -e "console.log(require('./package.json').version);")
   - version_prefix=$(echo $commit | head -c 6)
   - app_name=$(node -e "console.log(require('./package.json').name);")
-  - commit=$(git log -1 --format="%H")
   - author_name="$(git log -1 $TRAVIS_COMMIT --pretty="%aN")"
 addons:
   sonarcloud:
-    organization: "sonarcloud_organization_key" # the key of the org you chose at step #3
+    organization: "weslyg-github"
     token:
       secure: ${SONAR_TOKEN}
 install:
