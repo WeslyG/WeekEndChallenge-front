@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LocalStorageService } from './services/localStorage.service';
-import { DbKeys } from './services/db-keys'
+import { DbKeys } from './services/db-keys.service'
 
 @Component({
   selector: 'app-root',

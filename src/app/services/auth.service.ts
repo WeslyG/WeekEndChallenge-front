@@ -5,36 +5,46 @@ import { LocalStorageService } from './localStorage.service';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { LoginModel } from '../models/loginModel';
 import { User } from '../models/user.model';
-import { DbKeys } from './db-keys';
+import { DbKeys } from './db-keys.service';
+import { RegisterModel } from '../models/registerModel';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
+  
   constructor(
     private endpointService: EndpointService,
     private localStorageService: LocalStorageService,
     ) { }
 
-  public login(value: LoginModel) {
-    return this.endpointService.getLoginEndpoint(value.email, value.password).pipe(
+  login(value: LoginModel) {
+    return this.endpointService.getLoginEndpoint(value.login, value.password).pipe(
       map((reponse: Response) => {
-        const token = reponse.json().id_token;
-        this.processLogin(token);
+        this.processLogin(reponse.json().id_token);
         return reponse.ok;
       })
     )}
 
-  public saveUserDetails(user: User) {
+  // register(value: RegisterModel) {
+  //   return this.endpointService.getRegisterEndpoint(value.userName, value.email, value.password).pipe(
+  //     map((response: Response) => {
+  //       this.processLogin(response.json().id_token);
+  //       return response.ok;
+  //     })
+  //   );
+  // }
+
+  saveUserDetails(user: User) {
     this.localStorageService.saveDataToStorage(DbKeys.USER, JSON.stringify(user));
   }
 
-  private processLogin(id_token: string) {
+  processLogin(id_token: string) {
     this.localStorageService.saveDataToStorage(DbKeys.ID_TOKEN, id_token);
   }
 
-  public logout() {
+  logout() {
     this.localStorageService.clearStorage();
   }
   

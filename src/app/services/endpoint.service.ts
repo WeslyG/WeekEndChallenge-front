@@ -3,7 +3,7 @@ import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angul
 import  config from '../config/config';
 import { LocalStorageService } from './localStorage.service'
 import { Observable } from 'rxjs';
-import { DbKeys } from './db-keys';
+import { DbKeys } from './db-keys.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +14,16 @@ export class EndpointService {
     private LocalStorageService: LocalStorageService,
     ) { }
   
-  getLoginEndpoint(email: string, password: string): Observable<Response> {
+  getRegisterEndpoint () {
+    return true;
+  }
+  
+  getLoginEndpoint(login: string, password: string): Observable<Response> {
     const header = new Headers();
     header.append('Content-Type', 'application/x-www-form-urlencoded');
 
     const params = new URLSearchParams();
-    params.append('email', email);
+    params.append('login', login);
     params.append('password', password);
     const body = params.toString();
 

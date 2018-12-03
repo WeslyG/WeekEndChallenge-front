@@ -1,6 +1,11 @@
 {
   "name": "weekendchallenge",
   "version": "1.0.0",
+  "license": "MIT",
+  "author": {
+      "name": "WeslyG",
+      "url": "https://github.com/WeslyG"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o",

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DbKeys } from '../services/db-keys';
+import { DbKeys } from './db-keys.service';
 
 @Injectable({
     providedIn: 'root'

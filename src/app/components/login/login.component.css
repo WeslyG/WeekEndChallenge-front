@@ -2,13 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 92%;
+  height: 90%;
   position: relative;
 }
 
 .full-width.mat-dialog-actions {
   display: flex;
   justify-content: center;
+  height: 45px;
 }
 
 form {

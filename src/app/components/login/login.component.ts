@@ -28,10 +28,8 @@ export class LoginComponent implements OnInit {
   
   ngOnInit() {
     this.loginForm = this.fb.group({
-      // name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
-      // confirmPassword: ['', [Validators.required]]
+      login: ['', [Validators.required]],
+      password: ['', [Validators.required]]
     });
   }
 
@@ -41,29 +39,48 @@ export class LoginComponent implements OnInit {
       .subscribe(() => {
         this.userService.getUser().subscribe(userData => {
           this.authService.saveUserDetails(userData);
-          this.snackBar.open('Привет ' + this.authService.User.name + ' !', 'Ok', {
+          this.snackBar.open('Hello, ' + this.authService.User.name + '!', 'Ok', {
             duration: 3000,
           });
           this.isLoading = false;
-          
           this.routeService.redirectTo('/me');
-          // this.router.navigate(['../', { id: crisisId, foo: 'foo' }], { relativeTo: this.route });
-          // go to /me
-        })
+        },
+          (error: Response) => {
+            this.isLoading = false;
+            console.log(error);
+            this.snackBar.open(error.text().toString(), 'Ok', {
+              duration: 3500,
+            });
+          });
+      },
+        (error: Response) => {
+          this.isLoading = false;
+          if (error.status === 401) {
+            this.snackBar.open('Неверный логин или пароль', 'Ok', {
+              duration: 3000,
+            });
+          } else if (error.status === 400 ) {
+            this.snackBar.open('Такого пользователя не существует', 'Ok', {
+              duration: 3000,
+            });
+          } else {
+          this.snackBar.open(error.text().toString(), 'Ok', {
+            duration: 3500,
+          });
+        }
       });
   }
 
-
-  passwordMatch(password, confirmPassword) {
-    return (group: FormGroup) => {
-      const passwordInput = group.controls[password];
-      const passwordConfirmationInput = group.controls[confirmPassword];
-      if (passwordInput.value !== passwordConfirmationInput.value) {
-        return passwordConfirmationInput.setErrors({ notEquivalent: true });
-      } else {
-        return passwordConfirmationInput.setErrors(null);
-      }
-    };
-  }
 }
-// @Input() variav: string; - почитай про инпут
+
+  // passwordMatch(password, confirmPassword) {
+  //   return (group: FormGroup) => {
+  //     const passwordInput = group.controls[password];
+  //     const passwordConfirmationInput = group.controls[confirmPassword];
+  //     if (passwordInput.value !== passwordConfirmationInput.value) {
+  //       return passwordConfirmationInput.setErrors({ notEquivalent: true });
+  //     } else {
+  //       return passwordConfirmationInput.setErrors(null);
+  //     }
+  //   };
+  // }

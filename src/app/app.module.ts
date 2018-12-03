@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { MatSnackBarModule } from '@angular/material';
+import { 
+  MatTabsModule, 
+  MatMenuModule,
+  MatDividerModule,
+  MatGridListModule,
+  MatSnackBarModule,
+  MatListModule
+} from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatTabsModule, MatMenuModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -30,11 +35,13 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     CustomMaterialModule,
     HttpModule,
-    MatMenuModule,
-    MatGridListModule,
-    MatTabsModule,
-    ReactiveFormsModule,
     FormsModule,
+    MatListModule,
+    MatTabsModule,
+    MatMenuModule,
+    MatDividerModule,
+    MatGridListModule,
+    ReactiveFormsModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
