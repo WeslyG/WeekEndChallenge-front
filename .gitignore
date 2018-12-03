@@ -17,6 +17,7 @@
 .settings/
 *.sublime-workspace
 
+
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json
@@ -35,5 +36,6 @@ testem.log
 /typings
 
 # System Files
+.scannerwork/
 .DS_Store
 Thumbs.db
