@@ -36,15 +36,52 @@ mat-card {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
-  border-radius: 20px;
+  border-radius: 0 0 20px 20px;
+  position: relative;
+}
+
+.decor {
+  position: absolute;
+  
+  top: 0;
+  height: 60px;
+  width: 60px;
+  background: #523E46;
+}
+.decor-right {
+  right: -60px;
+}
+.decor-left {
+  left: -60px;
+  transform: rotate(90deg);
+}
+
+.decor::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  display: block;
+  height: 60px;
+  width: 60px;
+  background: #fff;
+  clip-path: circle(100% at 100% 100%);
 }
 
 .bg-wrapper {
-  padding-top: 20px;
   position: absolute;
   top: 0;
   z-index: -1;
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .decor {
+    display: none;
+  }
+  .background {
+    width: 100%;
+    height: 200px;
+  }
 }

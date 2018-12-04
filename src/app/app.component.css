@@ -15,3 +15,9 @@ mat-toolbar-row {
 button:nth-child(1n) {
   margin-right: 10px;
 }
+@media (max-width: 370px) {
+  mat-toolbar-row {
+    flex-direction: column;
+    align-items: center;
+  }
+}
