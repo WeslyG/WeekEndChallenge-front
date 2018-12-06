@@ -10,6 +10,27 @@
 			"item": [
 				{
 					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1d92c9ba-3eb9-49b1-8ef9-694a879f5644",
+								"exec": [
+									"pm.test(\"Status code is 201\", () => {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Create valid user\", () => {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('id_token');\r",
+									"});\r",
+									"\r",
+									"postman.setNextRequest('Login')"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -22,17 +43,16 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"email\":\"qwe\",\n\t\"name\": \"QWE\",\n\t\"password\":\"qwe\"\n}"
+							"raw": "{\n\t\"login\":\"{{userLogin}}\",\n\t\"name\": \"{{userName}}\",\n\t\"password\":\"{{userPass}}\"\n}"
 						},
 						"url": {
-							"raw": "http://{{url}}/api/v1/register",
+							"raw": "http://{{url}}/api/register",
 							"protocol": "http",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v1",
 								"register"
 							]
 						}
@@ -41,7 +61,32 @@
 				},
 				{
 					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e98392a2-794f-4e40-be9d-e5c97913bc14",
+								"exec": [
+									"pm.test(\"Status code is 201\", () => {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Create valid user\", () => {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.environment.set(\"auth_token\", jsonData.id_token);\r",
+									"    pm.expect(jsonData).to.have.property('access_token');\r",
+									"});\r",
+									"\r",
+									"postman.setNextRequest('Me');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -53,18 +98,91 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"email\":\"qwe\",\n\t \"password\": \"qwe\"\n}"
+							"raw": "{\n\t\"login\":\"{{userLogin}}\",\n\t\"password\": \"{{userPass}}\"\n}"
 						},
 						"url": {
-							"raw": "http://{{url}}/api/v1/login",
+							"raw": "http://{{url}}/api/login",
 							"protocol": "http",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v1",
 								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"5c06d37545acdd086436c0c3\",\n    \"name\": \"qwe\"\n}"
+						},
+						"url": {
+							"raw": "http://{{url}}/api/user/update",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{url}}/api/user",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user"
 							]
 						}
 					},
@@ -73,14 +191,227 @@
 			]
 		},
 		{
-			"name": "About Me info",
+			"name": "Quest",
+			"item": [
+				{
+					"name": "New",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Quest One5\",\n\t\"tag\": \"it\",\n\t\"description\": \"Что то за квест\",\n\t\"price\": 100,\n\t\"answers\": [\"hey\", \"heeeeey\"]\n}"
+						},
+						"url": {
+							"raw": "http://{{url}}/api/quest",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"quest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{url}}/api/quest/",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"quest",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{url}}/api/quest/5c0892d3d5b2603ca81936b0",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"quest",
+								"5c0892d3d5b2603ca81936b0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"id\": \"5c0892d3d5b2603ca81936b0\",\n        \"name\": \"First Quest\",\n        \"tag\": \"it\",\n        \"price\": 123,\n        \"description\": \"Это первый квест\",\n        \"answers\": [\"create\", \"update\"]\n    }"
+						},
+						"url": {
+							"raw": "http://{{url}}/api/quest/",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"quest",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"5c08a46d7971224f08a5befe\"\n}"
+						},
+						"url": {
+							"raw": "http://{{url}}/api/quest",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"quest"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Me",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2fada0c8-cc00-4d08-adf9-ae9ee136857e",
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Create valid user\", () => {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property('id');\r",
+							"    pm.expect(jsonData).to.have.property('name');\r",
+							"    pm.expect(jsonData).to.have.property('login');\r",
+							"    \r",
+							"    pm.expect(jsonData.name).to.eql(userName);\r",
+							"    pm.expect(jsonData.login).to.eql(userLogin);\r",
+							"});\r",
+							"\r",
+							"postman.setNextRequest('Check');"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InF3ZSIsIm5hbWUiOiJRV0UiLCJpZCI6IjViZmQ3OGJjYThkZjRlMGM2MGJkNjk4NiIsImlhdCI6MTU0MzMzODc3NH0.IeAVXBZTN5PWJahB6eWL9OhSYiD69RNXb7y1YRCC8Pk",
+							"value": "{{auth_token}}",
 							"type": "string"
 						}
 					]
@@ -92,16 +423,69 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{url}}/api/v1/user/me",
+					"raw": "http://{{url}}/api/user/me",
 					"protocol": "http",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
-						"v1",
 						"user",
 						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6cc7d15-aaac-4505-99c1-a2aa9dff1271",
+						"exec": [
+							"// pm.test(\"Status code is 200\", () => {",
+							"//     pm.response.to.have.status(200);",
+							"// });",
+							"",
+							"// pm.test(\"Create valid user\", () => {",
+							"//     const jsonData = pm.response.json();",
+							"//     pm.expect(jsonData).to.have.property('message');",
+							"// });",
+							"",
+							"// // postman.setNextRequest('Get users')"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"First Quest\",\n\t\"tag\": \"it\",\n\t\"description\": \"Это первый квест\",\n\t\"price\": 100,\n\t\"answers\": [\"hey\", \"heeeeey\"]\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/api/check",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"check"
 					]
 				}
 			},
