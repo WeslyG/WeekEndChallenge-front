@@ -12,9 +12,16 @@ mat-toolbar-row {
   color: #FFFFFF;
   text-decoration: none;
 }
+.title:hover {
+  text-decoration: underline;
+}
+
 button:nth-child(1n) {
   margin-right: 10px;
 }
+
+
+
 @media (max-width: 370px) {
   mat-toolbar-row {
     flex-direction: column;

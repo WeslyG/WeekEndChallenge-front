@@ -1,6 +1,6 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span><a href="/" class="title"> WeekEnd Challenge</a></span>
+    <span><a href="/" class="title" id="weekTitle"> WeekEnd Challenge</a></span>
     <div class="toolbar-ctr">
       <button mat-flat-button color="primary" routerLink="/tasks">Задачи</button>
       <span *ngIf="isLogin()">
@@ -11,7 +11,8 @@
         </mat-menu>
       </span>
       <span *ngIf="!isLogin()">
-        <button mat-flat-button color="primary" routerLink="/login">Войти</button>
+        <button mat-flat-button color="primary" routerLink="/login">Вход</button>
+        <button mat-flat-button color="primary" routerLink="/login">Регистрация</button>
       </span>
     </div>
   </mat-toolbar-row>

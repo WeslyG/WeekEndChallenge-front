@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { UserComponent } from './components/user/user.component';
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
+import { NotFoundComponent } from './components/not-found/not-found.component'
 
 
 const routes: Routes = [
@@ -13,16 +14,17 @@ const routes: Routes = [
     title: 'User'}
   },
   {
+    path: 'me', component: UserComponent, data: {
+      title: 'Пользователь'
+    }
+  },
+  {
     path: '', component: ScoreboardComponent, data: {
     title: 'Общий счет' }
   },
   {
-    path: 'me', component: UserComponent, data: {
-    title: 'Пользователь'}
-  },
-  // {
-  //   path: '**', redirectTo: NotFoundComponent, pathMatch: 'full'
-  // }
+    path: '**', component: NotFoundComponent
+  }
 ];
 
 @NgModule({

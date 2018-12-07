@@ -22,13 +22,15 @@ import { LoginComponent } from './components/login/login.component';
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     UserComponent,
-    ScoreboardComponent
+    NotFoundComponent,
+    ScoreboardComponent,
   ],
   imports: [
     BrowserModule,
