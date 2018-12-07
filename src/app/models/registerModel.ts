@@ -1,11 +1,10 @@
 export class RegisterModel {
-    constructor(userName?: string, email?: string, password?: string) {
-        this.userName = userName;
-        this.email = email;
+    constructor(name?, login?, password?: string) {
+        this.name = name;
+        this.login = login;
         this.password = password;
     }
-
-    userName: string;
-    email: string;
+    login: string;
+    name: string;
     password: string;
 }

@@ -27,17 +27,14 @@ export class AuthService {
       })
     )}
 
-  // register(value: RegisterModel) {
-  //   return this.endpointService.getRegisterEndpoint(value.userName, value.login, value.password).pipe(
-  //     map((response: Response) => {
-  //       // this.processLogin(response.json().id_token);
-  //       // нам не вернется токен! ибо нефиг!
-  //       // if (response)
-  //       console.log(response);
-  //       return response.ok;
-  //     })
-  //   );
-  // }
+  register(value: RegisterModel) {
+    console.log(' i am in register');
+    return this.endpointService.getRegisterEndpoint(value.name, value.login, value.password).pipe(
+      map((response: Response) => {
+        return response.ok;
+      })
+    );
+  }
 
   saveUserDetails(user: User) {
     this.localStorageService.saveDataToStorage(DbKeys.USER, JSON.stringify(user));

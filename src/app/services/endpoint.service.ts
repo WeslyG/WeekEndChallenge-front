@@ -26,12 +26,12 @@ export class EndpointService {
     return this.http.post(`${config.backend.backEndUrl}/login`, body, {headers: header});
   }
 
-  getRegisterEndpoint(userName, login, password: string){
+  getRegisterEndpoint(name, login, password: string){
     // TODO: refactor need too
     const header = new Headers();
     header.append('Content-Type', 'application/x-www-form-urlencoded');
     const params = new URLSearchParams();
-    params.append('name', userName);
+    params.append('name', name);
     params.append('login', login);
     params.append('password', password);
     const body = params.toString();

@@ -1,7 +1,15 @@
 <div class="wrapper">
   <mat-card>
-    <!-- Login -->
-    <mat-tab-group>
+    <span *ngIf="show_register">
+        <p>Поздравляю!</p>
+        <p>Регистрация успешна</p>
+        <p>Твой логин для входа = <strong> {{ user_login }} </strong></p>
+        <p>Теперь ты можешь войти в систему</p>
+      <button mat-flat-button color="primary" (click)="redirectAfterLogin()">Войти</button>
+      </span>
+      <span *ngIf="!show_register">
+        <!-- Login -->
+        <mat-tab-group>
       <mat-tab label="Вход">
         <form class="form" [formGroup]="loginForm">
           
@@ -69,18 +77,22 @@
             <mat-error *ngIf="registerForm.get('passwordConfirm').hasError('required')">
               Подтвердждение пароля <strong>не введено</strong>
             </mat-error>
+            <mat-error *ngIf="!registerForm.get('passwordConfirm').valid">
+              Пароли не совпадают
+            </mat-error>
           </mat-form-field>
 
 
         </form>
         <mat-dialog-actions class="full-width">
           <div class="button" *ngIf="!isLoading">
-            <button mat-raised-button color="primary" [disabled]="!registerForm.valid" (click)="register(registerForm.value)">Регистрация</button>
+            <button mat-raised-button color="primary" [disabled]="!registerForm.valid" (click)="registration(registerForm.value)">Регистрация</button>
           </div>
           <mat-spinner class="spinner" [diameter]="36" *ngIf="isLoading"></mat-spinner>
         </mat-dialog-actions>
       </mat-tab>
     </mat-tab-group>
+</span>
 
   </mat-card>
 

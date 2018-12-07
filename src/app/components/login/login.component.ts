@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { LoginModel } from 'src/app/models/loginModel';
+import { RegisterModel } from 'src/app/models/registerModel';
 import { UserService } from '../../services/user.service';
 import { RouteService } from 'src/app/services/route.service';
 import { LocalStorageService } from 'src/app/services/localStorage.service';
@@ -32,6 +33,8 @@ export class LoginComponent implements OnInit {
   hide_pass_login = true;
   hide_pass_registry = true;
   hide_pass_confirm = true;
+  show_register = false;
+  user_login = '';
   
   ngOnInit() {
     if (this.localStorageService.getDataFromStorage(DbKeys.ID_TOKEN)) {
@@ -46,6 +49,8 @@ export class LoginComponent implements OnInit {
         login: ['', [Validators.required]],
         password: ['', [Validators.required]],
         passwordConfirm: ['', [Validators.required]]
+      }, {
+          validator: this.passwordMatch('password', 'passwordConfirm')
       })
     }
   }
@@ -71,13 +76,9 @@ export class LoginComponent implements OnInit {
       },
         (error: Response) => {
           this.isLoading = false;
-          if (error.status === 401) {
+          if (error.status === 400) {
             console.log(error);
             this.snackBar.open('Неверный логин или пароль 😕', 'Ok', {
-              duration: 3000,
-            });
-          } else if (error.status === 400 ) {
-            this.snackBar.open('Такого пользователя не существует 😦', 'Ok', {
               duration: 3000,
             });
           } else if (error.status === 0 ){
@@ -92,16 +93,48 @@ export class LoginComponent implements OnInit {
       });
   }
 
+  registration(value: RegisterModel) {
+    this.isLoading = true;
+    this.authService.register(value)
+      .subscribe(() => {
+        this.isLoading = false;
+        this.show_register = true;
+        this.user_login = value.login;
+      },
+        (error: Response) => {
+          this.isLoading = false;
+          if (error.status === 400) {
+            // TODO: сделать на серве ответ "дублирование"
+            this.snackBar.open('Что то пошло не так 😦', 'Ok', {
+              duration: 3000,
+            });
+          } else if (error.status === 0) {
+            this.snackBar.open('Сервер не доступен 😢', 'Ok', {
+              duration: 4000,
+            });
+          } else {
+            this.snackBar.open(error.text().toString(), 'Ok', {
+              duration: 3500,
+            });
+          }
+        });
+  }
+
+  redirectAfterLogin() {
+    this.show_register = false;
+    this.routeService.redirectTo('/login');
+  }
+
+  passwordMatch(password, confirmPassword) {
+    return (group: FormGroup) => {
+      const passwordInput = group.controls[password];
+      const passwordConfirmationInput = group.controls[confirmPassword];
+        if (passwordInput.value !== passwordConfirmationInput.value) {
+          return passwordConfirmationInput.setErrors({ notEquivalent: true });
+        } else {
+          return passwordConfirmationInput.setErrors(null);
+        }
+      };
+  }
 }
 
-  // passwordMatch(password, confirmPassword) {
-  //   return (group: FormGroup) => {
-  //     const passwordInput = group.controls[password];
-  //     const passwordConfirmationInput = group.controls[confirmPassword];
-  //     if (passwordInput.value !== passwordConfirmationInput.value) {
-  //       return passwordConfirmationInput.setErrors({ notEquivalent: true });
-  //     } else {
-  //       return passwordConfirmationInput.setErrors(null);
-  //     }
-  //   };
-  // }
