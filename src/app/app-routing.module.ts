@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: '', component: ScoreboardComponent, data: {
-      title: 'Общий счет' }
+    title: 'Общий счет' }
   },
   {
     path: 'me', component: UserComponent, data: {

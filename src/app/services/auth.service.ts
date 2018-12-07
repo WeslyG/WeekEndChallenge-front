@@ -22,7 +22,7 @@ export class AuthService {
   login(value: LoginModel) {
     return this.endpointService.getLoginEndpoint(value.login, value.password).pipe(
       map((reponse: Response) => {
-        this.processLogin(reponse.json().id_token);
+        this.processLogin(reponse.json().access_token);
         return reponse.ok;
       })
     )}

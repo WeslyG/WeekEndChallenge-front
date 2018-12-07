@@ -27,11 +27,11 @@ export class EndpointService {
     params.append('password', password);
     const body = params.toString();
 
-    return this.http.post(`${config.backend.backEndUrl}${config.backend.apiVersion}/login`, body, {headers: header});
+    return this.http.post(`${config.backend.backEndUrl}/login`, body, {headers: header});
   }
 
   getUserEndpoint(): Observable<Response> {
-    return this.http.get(`${config.backend.backEndUrl}${config.backend.apiVersion}/user/me`, this.getAuthHeader());
+    return this.http.get(`${config.backend.backEndUrl}/user/me`, this.getAuthHeader());
   }
 
   private getAuthHeader(): RequestOptions {
