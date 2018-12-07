@@ -15,8 +15,8 @@
 
           <mat-form-field class="full-width" appearance="fill">
             <mat-label>Password</mat-label>
-            <input matInput placeholder="password" [type]="hide ? 'password' : 'text'" formControlName="password">
-            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <input matInput placeholder="password" [type]="hide_pass_login ? 'password' : 'text'" formControlName="password">
+            <mat-icon matSuffix (click)="hide_pass_login = !hide_pass_login">{{hide_pass_login ? 'visibility_off' : 'visibility'}}</mat-icon>
 
             <mat-error *ngIf="loginForm.get('password').hasError('required')">
               Пароль <strong>не введен</strong>
@@ -26,7 +26,7 @@
         </form>
         <mat-dialog-actions class="full-width">
           <div class="button" *ngIf="!isLoading">
-            <button mat-raised-button color="primary" [disabled]="!loginForm.valid" (click)="login(loginForm.value)">Войти</button>
+            <button mat-raised-button color="primary" [disabled]="!loginForm.valifd" (click)="login(loginForm.value)">Войти</button>
           </div>
           <mat-spinner class="spinner" [diameter]="36" *ngIf="isLoading"></mat-spinner>
         </mat-dialog-actions>
