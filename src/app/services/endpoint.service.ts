@@ -14,14 +14,10 @@ export class EndpointService {
     private LocalStorageService: LocalStorageService,
     ) { }
   
-  getRegisterEndpoint () {
-    return true;
-  }
-  
   getLoginEndpoint(login: string, password: string): Observable<Response> {
+    // TODO: refactor need
     const header = new Headers();
     header.append('Content-Type', 'application/x-www-form-urlencoded');
-
     const params = new URLSearchParams();
     params.append('login', login);
     params.append('password', password);
@@ -30,6 +26,20 @@ export class EndpointService {
     return this.http.post(`${config.backend.backEndUrl}/login`, body, {headers: header});
   }
 
+  getRegisterEndpoint(userName, login, password: string){
+    // TODO: refactor need too
+    const header = new Headers();
+    header.append('Content-Type', 'application/x-www-form-urlencoded');
+    const params = new URLSearchParams();
+    params.append('name', userName);
+    params.append('login', login);
+    params.append('password', password);
+    const body = params.toString();
+
+    return this.http.post(`${config.backend.backEndUrl}/register`, body, { headers: header });
+  }
+
+  // TODO: добавить параметр для просмотра других пользователей, без параметра идти на /me
   getUserEndpoint(): Observable<Response> {
     return this.http.get(`${config.backend.backEndUrl}/user/me`, this.getAuthHeader());
   }

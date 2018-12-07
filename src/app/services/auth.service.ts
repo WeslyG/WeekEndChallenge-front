@@ -28,9 +28,12 @@ export class AuthService {
     )}
 
   // register(value: RegisterModel) {
-  //   return this.endpointService.getRegisterEndpoint(value.userName, value.email, value.password).pipe(
+  //   return this.endpointService.getRegisterEndpoint(value.userName, value.login, value.password).pipe(
   //     map((response: Response) => {
-  //       this.processLogin(response.json().id_token);
+  //       // this.processLogin(response.json().id_token);
+  //       // нам не вернется токен! ибо нефиг!
+  //       // if (response)
+  //       console.log(response);
   //       return response.ok;
   //     })
   //   );

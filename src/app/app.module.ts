@@ -20,9 +20,11 @@ import { CustomMaterialModule } from './material.module';
 import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './components/login/login.component';
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
+import { TaskComponent } from './components/task/task.component'
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     UserComponent,
     NotFoundComponent,
     ScoreboardComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,

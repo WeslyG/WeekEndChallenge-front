@@ -26,20 +26,28 @@ export class LoginComponent implements OnInit {
     ) {}
 
   loginForm: FormGroup;
+  registerForm: FormGroup;
   isLoading = false;
   router: Router;
-  hide = true;
+  hide_pass_login = true;
+  hide_pass_registry = true;
+  hide_pass_confirm = true;
   
   ngOnInit() {
-    // TODO: ошибка в консоли, понять.
     if (this.localStorageService.getDataFromStorage(DbKeys.ID_TOKEN)) {
       this.routeService.redirectTo('/me');
-  } else {
-    this.loginForm = this.fb.group({
-      login: ['', [Validators.required]],
-      password: ['', [Validators.required]]
-    });
-  }
+    } else {
+      this.loginForm = this.fb.group({
+        login: ['', [Validators.required]],
+        password: ['', [Validators.required]]
+      });
+      this.registerForm = this.fb.group({
+        name: ['', [Validators.required]],
+        login: ['', [Validators.required]],
+        password: ['', [Validators.required]],
+        passwordConfirm: ['', [Validators.required]]
+      })
+    }
   }
 
   login(value: LoginModel) {
@@ -65,11 +73,11 @@ export class LoginComponent implements OnInit {
           this.isLoading = false;
           if (error.status === 401) {
             console.log(error);
-            this.snackBar.open('Неверный логин или пароль', 'Ok', {
+            this.snackBar.open('Неверный логин или пароль 😕', 'Ok', {
               duration: 3000,
             });
           } else if (error.status === 400 ) {
-            this.snackBar.open('Такого пользователя не существует', 'Ok', {
+            this.snackBar.open('Такого пользователя не существует 😦', 'Ok', {
               duration: 3000,
             });
           } else if (error.status === 0 ){
