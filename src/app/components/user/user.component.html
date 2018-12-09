@@ -1,15 +1,38 @@
-<mat-grid-list cols="4" rowHeight="100px">
-  <!-- <mat-grid-tile [colspan]="1" [rowspan]="3"> -->
-    <div class="avatar"></div>
-  <!-- </mat-grid-tile> -->
-  <mat-grid-tile [colspan]="3" [rowspan]="2">
-    <!-- <h3>Вера</h3> -->
-    
-  <mat-list>
-    <mat-list-item> Pepper </mat-list-item>
-    <mat-list-item> Salt </mat-list-item>
-    <mat-list-item> Paprika </mat-list-item>
-  </mat-list>
+<div class="wrapper">
+  <!-- <mat-grid-list cols="4" rowHeight="100px">
+      <div class="avatar"></div>
+    <mat-grid-tile [colspan]="3" [rowspan]="2">
+      
+    <mat-list>
+      <mat-list-item> Pepper </mat-list-item>
+      <mat-list-item> Salt </mat-list-item>
+      <mat-list-item> Paprika </mat-list-item>
+    </mat-list>
+  
+    </mat-grid-tile>
+  </mat-grid-list> -->
+  <div class="container">
+    <div class="avatar-container">
+      <div class="avatar">
+    </div>
 
-  </mat-grid-tile>
-</mat-grid-list>
+    </div>
+
+    <div class="info">
+      <div class="nav-center">
+        <nav class="nav-list">
+            <button mat-button>Имя</button>
+            <button mat-button>Очки</button>
+            <button mat-button>Квесты</button>
+            <button mat-button>Позиция в рейтинге</button>
+        </nav>
+      </div>
+      <div class="content">
+          <mat-card class="content-card">
+            <div class="title">Описание квеста</div>
+            <button mat-button color="primary">Добавить</button>
+          </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
