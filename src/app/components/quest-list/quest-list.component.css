@@ -1,0 +1,27 @@
+.wrapper {
+  width: 1000px;
+  margin: 0 auto;
+}
+.quest-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.category {
+  margin: 20px;
+  width: 250px;
+}
+.quest {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  align-items: baseline;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  text-align: center;
+}

@@ -11,31 +11,61 @@ export class QuestListComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  questList = [
+  
+  // какой то массив с категориями
+  // симулятор api
+  categoryList = [
     {
-      id: "5c09ce861c160353f085cee8",
-      name: "Мой первый квест",
-      tag: "it",
-      price: 100,
-      description: "что бы его решить тебе нужно ввести hey"
+      'category': 'it',
+      'quests': [
+        {
+          id: '12418hjfg123',
+          name: 'Мой первый квест',
+          tag: 'it',
+          price: 100,
+          description: 'что бы его решить тебе нужно ввести hey'
+        },
+        {
+          id: '12418hjfg23',
+          name: 'Мой второй квест',
+          tag: 'it',
+          price: 100,
+          description: 'что бы его решить тебе нужно ввести ZZZ'
+        },
+        {
+          id: '12418h3',
+          name: 'Мой второй квест',
+          tag: 'it',
+          price: 1200,
+          description: 'что бы его решить тебе нужно ввести AAA'
+        }
+      ]
     },
     {
-      id: "5c09ceab1c160353f085cee9",
-      name: "Это квест 2",
-      tag: "it",
-      price: 100,
-      description: "У него ответ другой можешь ввести zzzz"
+      'category': 'soft',
+      'quests': [
+        {
+          id: '12418hjfg123',
+          name: 'Мой первый квест',
+          tag: 'it',
+          price: 100,
+          description: 'что бы его решить тебе нужно ввести hey'
+        },
+        {
+          id: '12418hjfg23',
+          name: 'Мой второй квест',
+          tag: 'it',
+          price: 100,
+          description: 'что бы его решить тебе нужно ввести ZZZ'
+        },
+        {
+          id: '12418h3',
+          name: 'Мой второй квест',
+          tag: 'it',
+          price: 1200,
+          description: 'что бы его решить тебе нужно ввести AAA'
+        }
+      ]
     }
   ]
-
-  questMock = {
-      id: "5c09ceab1c160353f085cee9",
-      name: "Это квест 2",
-      tag: "it",
-      price: 100,
-      description: "У него ответ другой можешь ввести zzzz"
-    }
-
-
 }

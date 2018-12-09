@@ -1,13 +1,15 @@
-<div class="box">
-  <!-- TODO: ngfor here -->
-<mat-card>
-  <mat-list role="list">
-    <mat-list-item role="listitem">{{questMock.name}}
-      <!-- Такие варианты смотрел, но они все гавно, последний вроде ок. -->
-      <!-- <button mat-button color="primary">{{questMock.price}}</button> -->
-      <!-- <button mat-mini-fab color="accent">{{questMock.price}}</button> -->
-      <button mat-stroked-button color="accent">{{questMock.price}}</button>
-    </mat-list-item>
-  </mat-list>
-</mat-card>
+<div class="wrapper">
+  <div class="quest-container">
+    <!-- первый for по категориям -->                          <!-- Очень нужные коментарии в продакшен коде от Тима -->
+    <mat-card *ngFor="let categorys of categoryList" class="category">
+      <div class="title">{{ categorys.category }}</div>
+      <div class="list-quest">
+        <!-- второй for по квестам -->                         <!-- Очень нужные коментарии в продакшен коде от Тима -->
+        <div *ngFor="let quest of categorys.quests" class="quest">
+          <span>{{ quest.name }}</span>
+          <button mat-flat-button color="primary">{{ quest.price }}</button>
+        </div>
+      </div>
+    </mat-card>
+  </div>
 </div>
