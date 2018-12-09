@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { 
-  MatTabsModule, 
+import {
+  MatTabsModule,
   MatMenuModule,
   MatDividerModule,
   MatGridListModule,
@@ -20,11 +20,12 @@ import { CustomMaterialModule } from './material.module';
 import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './components/login/login.component';
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
-import { TaskComponent } from './components/task/task.component'
+import { QuestComponent } from './components/quest/quest.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { from } from 'rxjs';
+import { QuestListComponent } from './components/quest-list/quest-list.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { from } from 'rxjs';
     UserComponent,
     NotFoundComponent,
     ScoreboardComponent,
-    TaskComponent
+    QuestComponent,
+    QuestListComponent
   ],
   imports: [
     BrowserModule,

@@ -4,26 +4,55 @@ import { LoginComponent } from './components/login/login.component';
 import { UserComponent } from './components/user/user.component';
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
 import { NotFoundComponent } from './components/not-found/not-found.component'
+import { QuestComponent } from './components/quest/quest.component'
+import { QuestListComponent } from './components/quest-list/quest-list.component';
 
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent, data: {
-    title: 'Login'
-  } },
-  { path: 'user', component: UserComponent, data: {
-    title: 'User'}
+  {
+    path: 'login',
+    component: LoginComponent,
+    data: {
+      title: 'Login'
+    }
+  },
+  { path: 'user',
+    component: UserComponent,
+    data: {
+      title: 'User'
+    }
   },
   {
-    path: 'me', component: UserComponent, data: {
+    path: 'me',
+    component: UserComponent,
+    data: {
       title: 'Пользователь'
     }
   },
   {
-    path: '', component: ScoreboardComponent, data: {
-    title: 'Общий счет' }
+    path: 'quest-list',
+    component: QuestListComponent,
+    data: {
+      title: 'Список квестов'
+    }
   },
   {
-    path: '**', component: NotFoundComponent
+    path: 'quest',
+    component: QuestComponent,
+    data: {
+      title: 'Список квестов'
+    }
+  },
+  {
+    path: '',
+    component: ScoreboardComponent,
+    data: {
+      title: 'Общий счет'
+    }
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
   }
 ];
 

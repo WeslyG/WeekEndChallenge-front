@@ -14,13 +14,13 @@ export class AppComponent {
   constructor(
     private localStorageService: LocalStorageService,
   ) {}
-  
+
   public isLogin() {
     if (this.localStorageService.getDataFromStorage(DbKeys.ID_TOKEN)) {
       return true;
     } else {
       return false;
-    }  
+    }
   }
 
   public userName() {

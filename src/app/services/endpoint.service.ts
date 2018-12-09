@@ -13,7 +13,7 @@ export class EndpointService {
   constructor(private http: Http,
     private LocalStorageService: LocalStorageService,
     ) { }
-  
+
   getLoginEndpoint(login: string, password: string): Observable<Response> {
     // TODO: refactor need
     const header = new Headers();
@@ -37,6 +37,13 @@ export class EndpointService {
     const body = params.toString();
 
     return this.http.post(`${config.backend.backEndUrl}/register`, body, { headers: header });
+  }
+
+  getTasksEnpoint(){
+    const header = new Headers();
+    header.append('Content-Type', 'application/x-www-form-urlencoded');
+    const params = new URLSearchParams();
+    params.append('name', name);
   }
 
   // TODO: добавить параметр для просмотра других пользователей, без параметра идти на /me

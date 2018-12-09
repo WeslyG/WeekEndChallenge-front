@@ -1,8 +1,8 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span><a href="/" class="title" id="weekTitle"> WeekEnd Challenge</a></span>
+    <span><a routerLink="/" class="title" id="weekTitle"> WeekEnd Challenge</a></span>
     <div class="toolbar-ctr">
-      <button mat-flat-button color="primary" routerLink="/tasks">Задачи</button>
+      <button mat-flat-button color="primary" routerLink="/quest-list">Задачи</button>
       <span *ngIf="isLogin()">
         <button mat-button [matMenuTriggerFor]="menu">{{userName()}}</button>
         <mat-menu #menu="matMenu">

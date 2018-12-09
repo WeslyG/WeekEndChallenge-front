@@ -1,0 +1,19 @@
+<div class="box">
+  <mat-card class="quest-card">
+    <mat-card-header>
+      <mat-card-title>{{quest.name}}</mat-card-title>
+      <mat-card-subtitle>{{quest.price}}</mat-card-subtitle>
+    </mat-card-header>
+      {{ quest.discription}}
+    <form class="form" [formGroup]="answerForm">
+      <mat-form-field class="full-width" appearance="fill">
+        <input matInput placeholder="Ответ" formControlName="answer">
+        <mat-error *ngIf="!answerForm.hasError('required')">
+          Ответ <strong>не введен</strong>
+        </mat-error>
+      </mat-form-field>
+      <button mat-flat-button color="primary" (click)="redirectAfterLogin()">Отправить</button>
+
+    </form>
+  </mat-card>
+</div>

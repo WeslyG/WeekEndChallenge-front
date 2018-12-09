@@ -35,8 +35,9 @@ export class LoginComponent implements OnInit {
   hide_pass_confirm = true;
   show_register = false;
   user_login = '';
-  
+
   ngOnInit() {
+    // guard
     if (this.localStorageService.getDataFromStorage(DbKeys.ID_TOKEN)) {
       this.routeService.redirectTo('/me');
     } else {

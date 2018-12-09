@@ -7,13 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScoreboardComponent implements OnInit {
 
+  displayedColumns: string[] = ['position', 'name', 'quest', 'score'];
+  dataSource = ELEMENT_DATA;
+
   constructor() { }
 
   ngOnInit() {
   }
-
-  displayedColumns: string[] = ['position', 'name', 'quest', 'score'];
-  dataSource = ELEMENT_DATA;
 
 }
 
