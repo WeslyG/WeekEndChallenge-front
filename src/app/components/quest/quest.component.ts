@@ -46,8 +46,3 @@ export class QuestComponent implements OnInit {
       });
   }
 }
-
-
-// name: 'First quest',
-// description: 'Это первый квест, и тут должно быть его описание, его должно быть много, потому что я лью воду, дабы проверить работу формы',
-// price: 200

@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <mat-card>
+  <mat-card class="card">
     <span *ngIf="show_register">
         <p>Поздравляю!</p>
         <p>Регистрация успешна</p>
@@ -54,7 +54,7 @@
           
           <mat-form-field class="full-width" appearance="fill">
             <mat-label>Логин</mat-label>
-            <!-- TODO: проверять логин на уникальность в бд -->
+            <!-- TODO: проверять логин на уникальность через апи! -->
             <input matInput placeholder="Login" formControlName="login">
             <mat-error *ngIf="!registerForm.hasError('required')">
               Логин <strong>не введен</strong>

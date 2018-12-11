@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { QuestService } from '../../services/quest.service';
-// import { Quest } from '../../models/quest.model'
+import { QuestListService } from '../../services/questList.service';
+import { MatSnackBar, MatDialog } from '@angular/material';
+import { Response } from '@angular/http';
 
 @Component({
   selector: 'app-quest-list',
@@ -10,67 +11,23 @@ import { QuestService } from '../../services/quest.service';
 export class QuestListComponent implements OnInit {
 
   constructor(
-    private questServices: QuestService
+    private questListServices: QuestListService,
+    private snackBar: MatSnackBar
   ) { }
 
+  isLoading = false;
+  questList = [];
 
   ngOnInit() {
+    this.isLoading = true;
+    this.questListServices.getQuestList().subscribe(res => {
+      this.isLoading = false;
+      this.questList = res;
+    },
+      (error: Response) => {
+        this.isLoading = false;
+        this.snackBar.open(error.text(), 'Ok', {
+          duration: 3000,
+        });
+      });
   }
-
-  // какой то массив с категориями
-  // симулятор api
-//   categoryList = [
-//     {
-//       'category': 'it',
-//       'quests': [
-//         {
-//           id: '12418hjfg123',
-//           name: 'Мой первый квест',
-//           tag: 'it',
-//           price: 100,
-//           description: 'что бы его решить тебе нужно ввести hey'
-//         },
-//         {
-//           id: '12418hjfg23',
-//           name: 'Мой второй квест',
-//           tag: 'it',
-//           price: 100,
-//           description: 'что бы его решить тебе нужно ввести ZZZ'
-//         },
-//         {
-//           id: '12418h3',
-//           name: 'Мой второй квест',
-//           tag: 'it',
-//           price: 1200,
-//           description: 'что бы его решить тебе нужно ввести AAA'
-//         }
-//       ]
-//     },
-//     {
-//       'category': 'soft',
-//       'quests': [
-//         {
-//           id: '12418hjfg123',
-//           name: 'Мой первый квест',
-//           tag: 'it',
-//           price: 100,
-//           description: 'что бы его решить тебе нужно ввести hey'
-//         },
-//         {
-//           id: '12418hjfg23',
-//           name: 'Мой второй квест',
-//           tag: 'it',
-//           price: 100,
-//           description: 'что бы его решить тебе нужно ввести ZZZ'
-//         },
-//         {
-//           id: '12418h3',
-//           name: 'Мой второй квест',
-//           tag: 'it',
-//           price: 1200,
-//           description: 'что бы его решить тебе нужно ввести AAA'
-//         }
-//       ]
-//     }
-//   ]
-}

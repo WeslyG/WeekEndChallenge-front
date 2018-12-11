@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import config from '../config/config';
-import { LocalStorageService } from './localStorage.service'
+import { LocalStorageService } from './localStorage.service';
 import { Observable } from 'rxjs';
 import { DbKeys } from './db-keys.service';
 
@@ -46,6 +46,10 @@ export class EndpointService {
   // TODO: добавить параметр для просмотра других пользователей, без параметра идти на /me
   getUserEndpoint(): Observable<Response> {
     return this.http.get(`${config.backend.backEndUrl}/user/me`, this.getAuthHeader());
+  }
+
+  getQuestList(): Observable<Response> {
+    return this.http.get(`${config.backend.backEndUrl}/quest`);
   }
 
   private getAuthHeader(): RequestOptions {

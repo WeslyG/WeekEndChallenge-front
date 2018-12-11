@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   user_login = '';
 
   ngOnInit() {
-    // guard
+    // TODO: add guard
     if (this.localStorageService.getDataFromStorage(DbKeys.ID_TOKEN)) {
       this.routeService.redirectTo('/me');
     } else {
@@ -105,13 +105,16 @@ export class LoginComponent implements OnInit {
         (error: Response) => {
           this.isLoading = false;
           if (error.status === 400) {
-            // TODO: сделать на серве ответ "дублирование"
             this.snackBar.open('Что то пошло не так 😦', 'Ok', {
-              duration: 3000,
+              duration: 3500,
             });
           } else if (error.status === 0) {
             this.snackBar.open('Сервер не доступен 😢', 'Ok', {
-              duration: 4000,
+              duration: 3500,
+            });
+          } else if (error.status === 409) {
+            this.snackBar.open('Такой пользователь уже зарегистрирован 😨', 'Ok', {
+              duration: 3500,
             });
           } else {
             this.snackBar.open(error.text().toString(), 'Ok', {
