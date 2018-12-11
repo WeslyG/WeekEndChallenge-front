@@ -1,10 +1,8 @@
 <div class="wrapper">
   <div class="quest-container">
-    <!-- первый for по категориям -->
     <mat-card *ngFor="let tags of questList" class="tag">
       <div class="title">{{ tags.tag }}</div>
         <div class="list-quest">
-        <!-- второй for по квестам -->
         <div *ngFor="let quest of tags.quests" class="quest">
           <span>{{ quest.name }}</span>
           <button mat-flat-button color="primary">{{ quest.price }}</button>

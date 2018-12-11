@@ -31,3 +31,4 @@ export class QuestListComponent implements OnInit {
         });
       });
   }
+}
