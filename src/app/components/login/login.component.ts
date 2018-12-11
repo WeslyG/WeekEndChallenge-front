@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
         this.userService.getUser().subscribe(userData => {
           this.authService.saveUserDetails(userData);
           this.snackBar.open('Hello, ' + this.authService.User.name + '!', 'Ok', {
-            duration: 3000,
+            duration: 3500,
           });
           this.isLoading = false;
           this.routeService.redirectTo('/me');
@@ -80,11 +80,11 @@ export class LoginComponent implements OnInit {
           if (error.status === 400) {
             console.log(error);
             this.snackBar.open('Неверный логин или пароль 😕', 'Ok', {
-              duration: 3000,
+              duration: 3500,
             });
           } else if (error.status === 0 ){
             this.snackBar.open('Сервер не доступен 😢', 'Ok', {
-              duration: 4000,
+              duration: 3500,
             });
           } else {
           this.snackBar.open(error.text().toString(), 'Ok', {

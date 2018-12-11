@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
-import  config from '../config/config';
+import config from '../config/config';
 import { LocalStorageService } from './localStorage.service'
 import { Observable } from 'rxjs';
 import { DbKeys } from './db-keys.service';
@@ -11,7 +11,7 @@ import { DbKeys } from './db-keys.service';
 
 export class EndpointService {
   constructor(private http: Http,
-    private LocalStorageService: LocalStorageService,
+    private localStorageService: LocalStorageService,
     ) { }
 
   getLoginEndpoint(login: string, password: string): Observable<Response> {
@@ -26,7 +26,7 @@ export class EndpointService {
     return this.http.post(`${config.backend.backEndUrl}/login`, body, {headers: header});
   }
 
-  getRegisterEndpoint(name, login, password: string){
+  getRegisterEndpoint(name, login, password: string) {
     // TODO: refactor need too
     const header = new Headers();
     header.append('Content-Type', 'application/x-www-form-urlencoded');
@@ -39,11 +39,8 @@ export class EndpointService {
     return this.http.post(`${config.backend.backEndUrl}/register`, body, { headers: header });
   }
 
-  getTasksEnpoint(){
-    const header = new Headers();
-    header.append('Content-Type', 'application/x-www-form-urlencoded');
-    const params = new URLSearchParams();
-    params.append('name', name);
+  getOneQuest(id): Observable<Response> {
+    return this.http.get(`${config.backend.backEndUrl}/quest/${id}`, this.getAuthHeader());
   }
 
   // TODO: добавить параметр для просмотра других пользователей, без параметра идти на /me
@@ -52,7 +49,7 @@ export class EndpointService {
   }
 
   private getAuthHeader(): RequestOptions {
-    const accessToken = this.LocalStorageService.getDataFromStorage(DbKeys.ID_TOKEN);
+    const accessToken = this.localStorageService.getDataFromStorage(DbKeys.ID_TOKEN);
     const headers = new Headers({ 'Authorization': 'Bearer ' + accessToken });
     return new RequestOptions({ headers: headers });
   }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { EndpointService } from './endpoint.service';
-import { User } from '../models/user.model';
+import { QuestModel } from '../models/quest.model';
 import { map } from 'rxjs/operators';
 import { Response } from '@angular/http';
 
@@ -8,13 +8,14 @@ import { Response } from '@angular/http';
     providedIn: 'root'
 })
 
-export class UserService {
+export class QuestService {
+
     constructor(private endpointService: EndpointService) { }
 
-    getUser() {
-        return this.endpointService.getUserEndpoint().pipe(
+    getOneQuest(id) {
+        return this.endpointService.getOneQuest(id).pipe(
             map((response: Response) => {
-                return <User>response.json();
+                return <QuestModel>response.json();
             })
         );
     }

@@ -4,7 +4,7 @@
       <mat-card-title>{{quest.name}}</mat-card-title>
       <mat-card-subtitle>{{quest.price}}</mat-card-subtitle>
     </mat-card-header>
-      {{ quest.discription}}
+      {{ quest.description}}
     <form class="form" [formGroup]="answerForm">
       <mat-form-field class="full-width" appearance="fill">
         <input matInput placeholder="Ответ" formControlName="answer">
@@ -12,8 +12,7 @@
           Ответ <strong>не введен</strong>
         </mat-error>
       </mat-form-field>
-      <button mat-flat-button color="primary" (click)="redirectAfterLogin()">Отправить</button>
-
+        <button mat-flat-button color="primary" routerLink="/">Отправить</button>
     </form>
   </mat-card>
 </div>
