@@ -18,12 +18,11 @@ form {
   padding-top: 10px;
 }
 
-mat-card-header,
-mat-form-field {
+.full-width {
   margin-bottom: 20px;
 }
 
-mat-card {
+.card {
   width: 350px;
   text-align: center;
   border-radius: 20px;
