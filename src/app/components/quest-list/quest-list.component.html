@@ -5,7 +5,7 @@
         <div class="list-quest">
         <div *ngFor="let quest of tags.quests" class="quest">
           <span>{{ quest.name }}</span>
-          <button mat-flat-button color="primary">{{ quest.price }}</button>
+          <button mat-flat-button color="primary" [disabled]="!isUserLogin">{{ quest.price }}</button>
         </div>
       </div>
     </mat-card>

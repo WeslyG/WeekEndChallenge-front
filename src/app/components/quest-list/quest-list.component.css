@@ -1,14 +1,18 @@
 .wrapper {
-  width: 1000px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 .quest-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 40px;
+  align-items: flex-start;
 }
 .tag {
   margin: 20px;
   width: 250px;
+  align-items: flex-start;
 }
 .quest {
   width: 100%;
