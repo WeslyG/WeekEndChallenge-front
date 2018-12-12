@@ -1,4 +1,4 @@
-.box {
+/* .box {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,4 +8,52 @@
   margin-top: 5em;
   height: 250px;
   width: 50%;
+} */
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.container {
+    width: 1000px;
+    margin-top: 40px;
+    position: relative;
+}
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 5px;
+}
+h2 {
+    font-weight: 400;
+}
+h3 {
+    font-size: 28px;
+}
+h3::after {
+    content: 'очков';
+    margin-left: 10px;
+    font-weight: 300;
+    color: #808080;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+.form-container {
+    display: flex;
+    margin-top: 40px;
+}
+.description {
+    background-color: #F2F2F2;
+    border-radius: 5px;
+    padding: 10px 5px;
+}
+.btn-back {
+    position: absolute;
+    left: -100px;
+    top: 0;
 }
