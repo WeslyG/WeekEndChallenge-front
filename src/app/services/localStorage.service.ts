@@ -15,7 +15,7 @@ export class LocalStorageService {
     saveDataToStorage(key: string, value: string) {
         localStorage.setItem(key, value);
     }
-    
+
     // clearLocalStorage() {
         // localStorage.removeItem('AuthToken');
         // localStorage.clear();

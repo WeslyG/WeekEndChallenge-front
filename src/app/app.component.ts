@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LocalStorageService } from './services/localStorage.service';
-import { DbKeys } from './services/db-keys.service'
+import { DbKeys } from './services/db-keys.service';
 
 @Component({
   selector: 'app-root',
@@ -24,8 +24,8 @@ export class AppComponent {
   }
 
   public userName() {
-    const user = this.localStorageService.getDataFromStorage(DbKeys.USER)
-    return user.name
+    const user = this.localStorageService.getDataFromStorage(DbKeys.USER);
+    return user.name;
   }
 
   public logout() {

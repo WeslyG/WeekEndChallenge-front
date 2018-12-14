@@ -1,8 +1,10 @@
+import { Response } from '@angular/http';
+import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar, MatDialog } from '@angular/material';
 import { QuestService } from '../../services/quest.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatSnackBar, MatDialog } from '@angular/material';
-import { Response } from '@angular/http';
 
 @Component({
   selector: 'app-quest',
@@ -12,9 +14,11 @@ import { Response } from '@angular/http';
 export class QuestComponent implements OnInit {
 
   constructor(
+    private route: ActivatedRoute,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
-    private questServices: QuestService
+    private questServices: QuestService,
+    private location: Location
   ) { }
 
   answerForm: FormGroup;
@@ -30,7 +34,9 @@ export class QuestComponent implements OnInit {
     this.answerForm = this.fb.group({
       answer: ['', [Validators.required]],
     });
-    this.questServices.getOneQuest('5c09ce861c160353f085cee8').subscribe(res => {
+    const id = this.route.snapshot.paramMap.get('id');
+    console.log(id);
+    this.questServices.getOneQuest(id).subscribe(res => {
       this.isLoading = false;
       this.quest = {
         name: res.name,
@@ -45,4 +51,9 @@ export class QuestComponent implements OnInit {
         });
       });
   }
+
+  goBack(): void {
+    this.location.back();
+  }
+
 }

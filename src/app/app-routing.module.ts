@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { UserComponent } from './components/user/user.component';
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
-import { NotFoundComponent } from './components/not-found/not-found.component'
-import { QuestComponent } from './components/quest/quest.component'
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { QuestComponent } from './components/quest/quest.component';
 import { QuestListComponent } from './components/quest-list/quest-list.component';
 
 
@@ -13,17 +13,17 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
     data: {
-      title: 'Login'
+      title: 'Логин'
     }
   },
-  { path: 'user',
+  { path: 'user/:id',
     component: UserComponent,
     data: {
-      title: 'User'
+      title: 'Пользователь'
     }
   },
   {
-    path: 'me',
+    path: 'user/me',
     component: UserComponent,
     data: {
       title: 'Пользователь'
@@ -37,10 +37,10 @@ const routes: Routes = [
     }
   },
   {
-    path: 'quest',
+    path: 'quest/:id',
     component: QuestComponent,
     data: {
-      title: 'Список квестов'
+      title: 'Квест'
     }
   },
   {

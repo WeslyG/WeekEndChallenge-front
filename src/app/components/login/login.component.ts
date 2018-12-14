@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
         passwordConfirm: ['', [Validators.required]]
       }, {
           validator: this.passwordMatch('password', 'passwordConfirm')
-      })
+      });
     }
   }
 
@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
             this.snackBar.open('Неверный логин или пароль 😕', 'Ok', {
               duration: 3500,
             });
-          } else if (error.status === 0 ){
+          } else if (error.status === 0 ) {
             this.snackBar.open('Сервер не доступен 😢', 'Ok', {
               duration: 3500,
             });

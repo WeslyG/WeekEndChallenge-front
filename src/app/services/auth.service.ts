@@ -13,7 +13,7 @@ import { RegisterModel } from '../models/registerModel';
 })
 
 export class AuthService {
-  
+
   constructor(
     private endpointService: EndpointService,
     private localStorageService: LocalStorageService,
@@ -25,10 +25,10 @@ export class AuthService {
         this.processLogin(reponse.json().access_token);
         return reponse.ok;
       })
-    )}
+    );
+  }
 
   register(value: RegisterModel) {
-    console.log(' i am in register');
     return this.endpointService.getRegisterEndpoint(value.name, value.login, value.password).pipe(
       map((response: Response) => {
         return response.ok;
@@ -47,7 +47,7 @@ export class AuthService {
   logout() {
     this.localStorageService.clearStorage();
   }
-  
+
   get User(): User {
     const user = <User>this.localStorageService.getDataFromStorage(DbKeys.USER);
     return user;

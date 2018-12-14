@@ -6,7 +6,7 @@
       <span *ngIf="isLogin()">
         <button mat-button [matMenuTriggerFor]="menu">{{userName()}}</button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item routerLink="/me">Моя страница</button>
+          <button mat-menu-item routerLink="/user/me">Моя страница</button>
           <button mat-menu-item (click)='logout()'>Выход</button>
         </mat-menu>
       </span>

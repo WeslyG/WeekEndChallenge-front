@@ -4,8 +4,10 @@
       <div class="title">{{ tags.tag }}</div>
         <div class="list-quest">
         <div *ngFor="let quest of tags.quests" class="quest">
-          <span>{{ quest.name }}</span>
-          <button mat-flat-button color="primary" [disabled]="!isUserLogin">{{ quest.price }}</button>
+          <a routerLink="/quest/{{quest.id}}">
+            <span>{{ quest.name }}</span>
+            <button mat-flat-button color="primary" [disabled]="!isUserLogin">{{ quest.price }}</button>
+          </a>
         </div>
       </div>
     </mat-card>

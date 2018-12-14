@@ -1,34 +1,39 @@
 <div class="wrapper">
   <div class="container">
     <!-- Кнопка возврата на предыдущую страницу -->
-    <button class="btn-back" mat-icon-button>
-      <mat-icon aria-label="Example icon-button with a heart icon">arrow_back</mat-icon>
+    <button class="btn-back" (click)="goBack()" mat-icon-button>
+      <mat-icon>arrow_back</mat-icon>
     </button>
     
     <!-- Заголовок -->
     <mat-card class="card">
-      <div class="title">
-        <h2>{{quest.name}}</h2>
-        <h3>{{quest.price}}</h3>
-      </div>
+        <mat-dialog-actions class="full-width">
+          <div class="button" *ngIf="!isLoading"></div>
+          <!-- TODO: спиннер надо по центру, и чтоб он закрыл собой все что там еще "не загрузилось" -->
+          <mat-spinner class="spinner" [diameter]="50" *ngIf="isLoading"></mat-spinner>
+        </mat-dialog-actions>
+        <div class="title">
+          <h2>{{quest.name}}</h2>
+          <h3>{{quest.price}}</h3>
+        </div>
 
-      <!-- Здесь можно добавить картинки и прочее -->
-      <div class="description">
-        <p>{{ quest.description}}</p>
-      </div>
+        <!-- Здесь можно добавить картинки и прочее -->
+        <div class="description">
+          <p>{{ quest.description}}</p>
+        </div>
 
-      <!-- Форма отправки ответа -->
-      <div class="form-container">
-        <form class="form" [formGroup]="answerForm">
-          <mat-form-field class="full-width" appearance="outline">
-            <input matInput placeholder="Ответ" formControlName="answer">
-            <mat-error *ngIf="!answerForm.hasError('required')">
-              Ответ <strong>не введен</strong>
-            </mat-error>
-          </mat-form-field>
-          <button mat-flat-button color="primary" routerLink="/">Отправить</button>
-        </form>
-      </div>
+        <!-- Форма отправки ответа -->
+        <div class="form-container">
+          <form class="form" [formGroup]="answerForm">
+            <mat-form-field class="full-width" appearance="outline">
+              <input matInput placeholder="Ответ" formControlName="answer">
+              <mat-error *ngIf="!answerForm.hasError('required')">
+                Ответ <strong>не введен</strong>
+              </mat-error>
+            </mat-form-field>
+            <button mat-flat-button color="primary" routerLink="/">Отправить</button>
+          </form>
+        </div>
     </mat-card>
 
   </div>

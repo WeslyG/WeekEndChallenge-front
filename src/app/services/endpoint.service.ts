@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
-import config from '../config/config';
+import { environment } from '../../environments/environment';
 import { LocalStorageService } from './localStorage.service';
 import { Observable } from 'rxjs';
 import { DbKeys } from './db-keys.service';
@@ -23,7 +23,7 @@ export class EndpointService {
     params.append('password', password);
     const body = params.toString();
 
-    return this.http.post(`${config.backend.backEndUrl}/login`, body, {headers: header});
+    return this.http.post(`${environment.apiUrl}/login`, body, {headers: header});
   }
 
   getRegisterEndpoint(name, login, password: string) {
@@ -36,20 +36,23 @@ export class EndpointService {
     params.append('password', password);
     const body = params.toString();
 
-    return this.http.post(`${config.backend.backEndUrl}/register`, body, { headers: header });
+    return this.http.post(`${environment.apiUrl}/register`, body, { headers: header });
   }
 
   getOneQuest(id): Observable<Response> {
-    return this.http.get(`${config.backend.backEndUrl}/quest/${id}`, this.getAuthHeader());
+    return this.http.get(`${environment.apiUrl}/quest/${id}`, this.getAuthHeader());
   }
 
-  // TODO: добавить параметр для просмотра других пользователей, без параметра идти на /me
-  getUserEndpoint(): Observable<Response> {
-    return this.http.get(`${config.backend.backEndUrl}/user/me`, this.getAuthHeader());
+  getUserEndpoint(userId): Observable<Response> {
+    if (userId === 'me') {
+      return this.http.get(`${environment.apiUrl}/user/me`, this.getAuthHeader());
+    } else {
+      return this.http.get(`${environment.apiUrl}/user/${userId}`, this.getAuthHeader());
+    }
   }
 
   getQuestList(): Observable<Response> {
-    return this.http.get(`${config.backend.backEndUrl}/quest`);
+    return this.http.get(`${environment.apiUrl}/quest`);
   }
 
   private getAuthHeader(): RequestOptions {

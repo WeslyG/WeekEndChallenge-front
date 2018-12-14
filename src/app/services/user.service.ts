@@ -12,7 +12,7 @@ export class UserService {
     constructor(private endpointService: EndpointService) { }
 
     getUser() {
-        return this.endpointService.getUserEndpoint().pipe(
+        return this.endpointService.getUserEndpoint('me').pipe(
             map((response: Response) => {
                 return <User>response.json();
             })
