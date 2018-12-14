@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
             duration: 3500,
           });
           this.isLoading = false;
-          this.routeService.redirectTo('/me');
+          this.routeService.redirectTo('/user/me');
         },
           (error: Response) => {
             this.isLoading = false;
