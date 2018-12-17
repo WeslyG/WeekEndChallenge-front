@@ -45,10 +45,22 @@ h3::after {
 .description {
     background-color: #F2F2F2;
     border-radius: 5px;
-    padding: 10px 5px;
+    padding: 10px 15px;
 }
 .btn-back {
     position: absolute;
     left: -100px;
     top: 0;
+    transition: .3s;
+}
+
+@media (max-width: 1200px) {
+    .btn-back {
+        left: 20px;
+        top: 20px;
+        z-index: 1;
+    }
+    .mat-card {
+        padding-top: 60px;
+    }
 }
