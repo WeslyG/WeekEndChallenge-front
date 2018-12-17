@@ -1,14 +1,9 @@
-/* .box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
-
-.quest-card {
-  margin-top: 5em;
-  height: 250px;
-  width: 50%;
-} */
 
 .wrapper {
     width: 100%;

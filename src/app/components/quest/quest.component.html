@@ -10,7 +10,8 @@
         <mat-dialog-actions class="full-width">
           <div class="button" *ngIf="!isLoading"></div>
           <!-- TODO: спиннер надо по центру, и чтоб он закрыл собой все что там еще "не загрузилось" -->
-          <mat-spinner class="spinner" [diameter]="50" *ngIf="isLoading"></mat-spinner>
+          <!-- <mat-spinner class="spinner" [diameter]="50" ></mat-spinner> -->
+          <mat-progress-bar mode="indeterminate" *ngIf="isLoading" class="loading"></mat-progress-bar>
         </mat-dialog-actions>
         <div class="title">
           <h2>{{quest.name}}</h2>

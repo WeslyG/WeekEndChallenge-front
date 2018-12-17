@@ -7,6 +7,7 @@ import {
   MatGridListModule,
   MatSnackBarModule,
   MatListModule,
+  MatProgressBarModule,
   MatBadgeModule
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
@@ -50,6 +51,7 @@ import { QuestListComponent } from './components/quest-list/quest-list.component
     MatDividerModule,
     MatGridListModule,
     ReactiveFormsModule,
+    MatProgressBarModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
     MatBadgeModule,
