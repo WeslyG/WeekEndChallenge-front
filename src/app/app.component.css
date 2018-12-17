@@ -11,9 +11,26 @@
 .title {
   color: #FFFFFF;
   text-decoration: none;
+  position: relative;
 }
-.title:hover {
-  text-decoration: underline;
+.title:after {
+    content: '';
+    width: 1px;
+    /* width: 0; */
+    transform-origin: center;
+    height: 2px;
+    background-color: #fff;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    opacity: 0;
+    transition: .5s;
+}
+
+.title:hover:after {
+    opacity: .5;
+    transform: scaleX(177);
 }
 
 button:nth-child(1n) {
