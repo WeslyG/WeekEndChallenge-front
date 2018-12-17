@@ -6,7 +6,8 @@ import {
   MatDividerModule,
   MatGridListModule,
   MatSnackBarModule,
-  MatListModule
+  MatListModule,
+  MatBadgeModule
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -51,6 +52,7 @@ import { QuestListComponent } from './components/quest-list/quest-list.component
     ReactiveFormsModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
+    MatBadgeModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],

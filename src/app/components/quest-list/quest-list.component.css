@@ -1,3 +1,4 @@
+
 .wrapper {
   max-width: 1000px;
   margin: 0 auto;
@@ -14,12 +15,26 @@
   width: 250px;
   align-items: flex-start;
 }
+
+.quest-wrapper {
+    width: 100%;
+    padding: 0;
+}
+
 .quest {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
-  align-items: baseline;
+  align-items: center;
+  opacity: 0.75;
+  transition: .3s;
+}
+.card-quest {
+    margin-bottom: 20px;
+}
+.quest:hover {
+    border-radius: 5px;
+    opacity: 100;
 }
 
 .title {
@@ -28,4 +43,21 @@
   text-transform: uppercase;
   margin-bottom: 10px;
   text-align: center;
+}
+
+.quest-name {
+    width: 80%;
+    text-align: left;
+    white-space: pre-line;
+}
+
+.quest-price {
+    font-weight: 900;
+    border-radius: 5px;
+    background-color: #ff56223b;
+    padding: 5px 15px;
+}
+
+p {
+    margin: 0;
 }

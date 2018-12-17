@@ -1,15 +1,23 @@
 <div class="wrapper">
   <div class="quest-container">
-    <mat-card *ngFor="let tags of questList" class="tag">
-      <div class="title">{{ tags.tag }}</div>
+    <div *ngFor="let tags of questList" class="tag">
+        <p class="title">
+            <span [matBadge]="tags.quests.length" matBadgeOverlap="false">{{ tags.tag }}</span>
+        </p>
         <div class="list-quest">
-        <div *ngFor="let quest of tags.quests" class="quest">
-          <a routerLink="/quest/{{quest.id}}">
-            <span>{{ quest.name }}</span>
-            <button mat-flat-button color="primary" [disabled]="!isUserLogin">{{ quest.price }}</button>
-          </a>
-        </div>
+            <mat-card *ngFor="let quest of tags.quests" class="card-quest">
+                <button mat-flat-button class="quest-wrapper" routerLink="/quest/{{quest.id}}">
+                    <div class="quest">
+                        <div class="quest-name">
+                            <p>{{ quest.name }}</p>
+                        </div>
+                        <div class="quest-price">
+                            <p color="primary">{{ quest.price }}</p>
+                        </div>
+                    </div>
+                </button>
+            </mat-card>
       </div>
-    </mat-card>
+    </div>
   </div>
 </div>
