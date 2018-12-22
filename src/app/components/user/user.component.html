@@ -1,36 +1,35 @@
 <div class="wrapper">
-  <!-- <mat-grid-list cols="4" rowHeight="100px">
-      <div class="avatar"></div>
-    <mat-grid-tile [colspan]="3" [rowspan]="2">
-      
-    <mat-list>
-      <mat-list-item> Pepper </mat-list-item>
-      <mat-list-item> Salt </mat-list-item>
-      <mat-list-item> Paprika </mat-list-item>
-    </mat-list>
-  
-    </mat-grid-tile>
-  </mat-grid-list> -->
   <div class="container">
-    <div class="avatar-container">
-      <div class="avatar"></div>
+
+    <div class="user-info-container">
+      <div class="user-avatar"></div>
+      <div class="user-info">
+        <h1>{{ user.name }}</h1>
+        <h2>{{ user.score }}</h2>
+      </div>
+    </div>
+    <div class="quests-container">
+      <div class="count-quests">
+        <h2>Выполнено квестов: </h2>
+        <h4>{{ user.questCount }}</h4>
+      </div>
+
+      <mat-card class="quest-card" *ngFor="let quest of user.quests">
+        <div class="quest-name">
+          <h3>{{ quest.name }}</h3>
+          <h4>{{ quest.tag }}</h4>
+        </div>
+        <div class="quest-price">
+            <button mat-button color="primary">
+              <h2>{{ quest.price }}</h2>
+            </button>
+
+        </div>
+        <!-- Здесь можно поместить переход на квест -->
+        <button mat-button class="quest-click"></button>
+      </mat-card>
+
     </div>
 
-    <div class="info">
-      <div class="nav-center">
-        <nav class="nav-list">
-            <button mat-button>Имя</button>
-            <button mat-button>Очки</button>
-            <button mat-button>Квесты</button>
-            <button mat-button>Позиция в рейтинге</button>
-        </nav>
-      </div>
-      <div class="content">
-          <mat-card class="content-card">
-            <div class="title">Описание квеста</div>
-            <button mat-button color="primary">Добавить</button>
-          </mat-card>
-      </div>
-    </div>
   </div>
 </div>

@@ -1,10 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 .wrapper {
   display: flex;
   justify-content: center;
   width: 100%;
 }
-
-.avatar {
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+  margin-top: 20px;
+}
+.user-info-container {
+  display: flex;
+}
+.user-avatar {
   height: 200px;
   width: 200px;
   border-radius: 50%;
@@ -12,32 +24,67 @@
   background-position: 19% 36%;
 }
 
-.info {
-  width: 100%;
+.user-info {
   display: flex;
-  flex-direction: column;
-  padding-left: 20px;
-}
-
-.container {
-  display: flex;
-  width: 1000px;
-}
-
-.nav-list {
-  display: flex;
-  width: 100%;
   justify-content: space-between;
-}
-
-.nav-center {
-  height: 200px;
-  display: flex;
   align-items: center;
+
+  width: calc(100% - 200px);
+}
+.user-info h1 {
+  text-transform: uppercase;
+  font-weight: 200;
+
+  margin-left: 20px;
 }
 
-.content-card {
+.user-info h2 {
+  font-style: 24px;
+}
+
+.user-info h2::after {
+  content: 'очков';
+  font-weight: 100;
+  margin-left: 10px;
+  opacity: .4;
+  font-style: 18px;
+}
+.quests-container {
+  margin-top: 20px;
+}
+
+.count-quests {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.count-quests h2 {
+  font-weight: 200;
+  font-size: 18px;
+}
+.count-quests h4 {
+  margin-left: 20px;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.quest-card {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.quest-name h4 {
+  opacity: .4;
+}
+
+.quest-click {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
