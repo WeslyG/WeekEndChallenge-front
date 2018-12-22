@@ -1,17 +1,21 @@
 import { Gender } from '../enums/gender';
 
 export class User {
-    constructor(id?: string, name?: string, login?: string, birthDay?: Date, gender?: Gender) {
+    constructor(id?: string, name?: string, login?: string, gender?: Gender, score?: number, questCount?: number, quests?: []) {
         this.id = id;
         this.name = name;
         this.login = login;
-        this.birthDay = birthDay;
         this.gender = gender;
+        this.score = score;
+        this.questCount = questCount;
+        this.quests = quests;
     }
 
     id: string;
     name: string;
     login: string;
-    birthDay: Date;
+    score: number;
+    questCount: number;
+    quests: [];
     gender: Gender;
 }

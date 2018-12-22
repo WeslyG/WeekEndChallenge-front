@@ -35,7 +35,6 @@ export class QuestComponent implements OnInit {
       answer: ['', [Validators.required]],
     });
     const id = this.route.snapshot.paramMap.get('id');
-    console.log(id);
     this.questServices.getOneQuest(id).subscribe(res => {
       this.isLoading = false;
       this.quest = {
