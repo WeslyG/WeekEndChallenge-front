@@ -6,6 +6,7 @@
           <span [matBadge]="tags.quests.length" matBadgeOverlap="false">{{ tags.tag }}</span>
         </p>
         <div class="list-quest">
+          <!--  [ngClass]="{'complete-quest': true}"  тут прописать условие-->
           <mat-card *ngFor="let quest of tags.quests" class="card-quest">
             <button mat-flat-button class="quest-wrapper" [disabled]="!isUserLogin" routerLink="/quest/{{quest.id}}">
               <div class="quest">
@@ -13,7 +14,7 @@
                   <p>{{ quest.name }}</p>
                 </div>
                 <div class="quest-price">
-                  <p color="primary">{{ quest.price }}</p>
+                  <p>{{ quest.price }}</p>
                 </div>
               </div>
             </button>

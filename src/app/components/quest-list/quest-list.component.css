@@ -72,3 +72,7 @@ p {
 .mat-flat-button[disabled][disabled] {
     background: none;
 }
+
+.complete-quest {
+    border: 1px solid #3F9726;
+}
