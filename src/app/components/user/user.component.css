@@ -89,6 +89,24 @@
   top: 0;
   left: 0;
 }
+.no-quests {
+  opacity: .4;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.no-quests h1 {
+  font-weight: 100;
+}
+.no-quest-img {
+  height: 200px;
+  width: 200px;
+  background: url(../../../assets/img/no-quest.jpg) center no-repeat;
+  background-size: contain;
+  
+}
 
 @media (max-width: 458px) {
   .user-info {

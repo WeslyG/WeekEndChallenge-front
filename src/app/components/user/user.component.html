@@ -13,21 +13,27 @@
         <h2>Выполнено квестов: </h2>
         <h4>{{ user.questCount }}</h4>
       </div>
+      <div *ngIf="user.quests.length" >
+        <mat-card class="quest-card"*ngFor="let quest of user.quests">
+          <div class="quest-name">
+            <h3>{{ quest.name }}</h3>
+            <h4>{{ quest.tag }}</h4>
+          </div>
+          <div class="quest-price">
+              <button mat-button color="primary">
+                <h2>{{ quest.price }}</h2>
+              </button>
+  
+          </div>
+          <!-- Здесь можно поместить переход на квест -->
+          <button mat-button class="quest-click" routerLink="/quest/{{quest.id}}"></button>
+        </mat-card>
+      </div>
 
-      <mat-card class="quest-card" *ngFor="let quest of user.quests">
-        <div class="quest-name">
-          <h3>{{ quest.name }}</h3>
-          <h4>{{ quest.tag }}</h4>
-        </div>
-        <div class="quest-price">
-            <button mat-button color="primary">
-              <h2>{{ quest.price }}</h2>
-            </button>
-
-        </div>
-        <!-- Здесь можно поместить переход на квест -->
-        <button mat-button class="quest-click" routerLink="/quest/{{quest.id}}"></button>
-      </mat-card>
+      <div class="no-quests" *ngIf="user.quests.length == 0">
+        <h1>У вас пока нет выполненых кветов</h1>
+        <div class="no-quest-img"></div>
+      </div>
 
     </div>
 
