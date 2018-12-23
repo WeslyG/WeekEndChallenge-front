@@ -25,7 +25,7 @@
 
         <!-- Форма отправки ответа -->
         <div class="form-container">
-          <form class="form" [formGroup]="answerForm">
+          <form class="form" [formGroup]="answerForm" *ngIf="!completed">
             <mat-form-field class="full-width" appearance="outline">
               <input matInput placeholder="Ответ" formControlName="answer">
               <mat-error *ngIf="!answerForm.hasError('required')">
@@ -34,12 +34,15 @@
             </mat-form-field>
             <button mat-flat-button color="primary" (click)="answer(answerForm.value)" >Отправить</button>
           </form>
-          <!-- *ngIf="errorAnswer" -->
+
           <div class="answer wrong" [ngClass]="{'answer-show': errorAnswer}">
             <p>Ответ не верный</p>
           </div>
           <div class="answer currect" [ngClass]="{'answer-show': currectAnswer}">
             <p>Ответ верный</p>
+          </div>
+          <div class="answer complete" [ngClass]="{'answer-show': completed}">
+            <p>Ответ отправлен</p>
           </div>
         </div>
     </mat-card>

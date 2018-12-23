@@ -31,6 +31,7 @@ export class QuestComponent implements OnInit {
 
   private errorAnswer: Boolean = false;
   private currectAnswer: Boolean = false;
+  private completed: Boolean = false;
 
   ngOnInit() {
     this.isLoading = true;
@@ -40,6 +41,9 @@ export class QuestComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.questServices.getOneQuest(id).subscribe(res => {
       this.isLoading = false;
+      if (res.completed === true) {
+        this.completed = true;
+      }
       this.quest = {
         name: res.name,
         price: res.price,
