@@ -28,6 +28,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 
   width: calc(100% - 200px);
 }
@@ -87,4 +88,21 @@
   height: 100%;
   top: 0;
   left: 0;
+}
+
+@media (max-width: 458px) {
+  .user-info {
+    justify-content: center;
+  }
+  .user-info h1 {
+    margin: 0;
+  }
+  .user-avatar {
+    height: 100px;
+    width: 100px;
+  }
+
+  .user-info {
+    width: calc(100% - 100px);
+  }
 }
