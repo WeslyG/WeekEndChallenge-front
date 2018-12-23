@@ -36,14 +36,11 @@ export class ScoreboardComponent implements OnInit {
     this.userService.getScoreBoard()
       .subscribe(res => {
         this.isLoading = false;
-        // console.log(res.length);
         for (let i = 0, len = res.length; i < len; i++) {
           this.ELEMENT_DATA.push(res[i]);
         }
         this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
         this.dataSource.sort = this.sort;
-        
-        // this.ELEMENT_DATA = res;
     },
 
       (error: Response) => {
