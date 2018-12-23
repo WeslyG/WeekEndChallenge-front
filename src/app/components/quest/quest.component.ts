@@ -31,7 +31,7 @@ export class QuestComponent implements OnInit {
 
   private errorAnswer: Boolean = false;
   private currectAnswer: Boolean = false;
-  private completed: Boolean = false;
+  completed: Boolean = false;
 
   ngOnInit() {
     this.isLoading = true;
