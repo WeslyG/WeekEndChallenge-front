@@ -51,10 +51,4 @@ export class ScoreboardComponent implements OnInit {
         // });
       });
   }
-
-
-  }
 }
-
-
-
