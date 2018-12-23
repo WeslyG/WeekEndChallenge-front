@@ -23,7 +23,7 @@ export class UserService {
     getScoreBoard() {
         return this.endpointService.getScoreBoard().pipe(
             map((response: Response) => {
-                return <QuestListModel>response.json();
+                return response.json();
             })
         );
     }
