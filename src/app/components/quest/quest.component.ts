@@ -29,6 +29,9 @@ export class QuestComponent implements OnInit {
     description: ''
   };
 
+  private errorAnswer: Boolean = false;
+  private currectAnswer: Boolean = false;
+
   ngOnInit() {
     this.isLoading = true;
     this.answerForm = this.fb.group({
@@ -62,8 +65,11 @@ export class QuestComponent implements OnInit {
       .subscribe(res => {
           console.log(res);
           if (res.message === true) {
-            this.isLoading = false;
+            this.currectAnswer = true;
+          } else {
+            this.errorAnswer = true;
           }
+          this.isLoading = false;
         },
           (error: Response) => {
             this.isLoading = false;

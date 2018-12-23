@@ -40,6 +40,7 @@ h3::after {
 }
 .form-container {
     display: flex;
+    justify-content: space-between;
     margin-top: 40px;
 }
 .description {
@@ -52,6 +53,45 @@ h3::after {
     left: -100px;
     top: 0;
     transition: .3s;
+}
+
+.answer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px;
+    margin-left: 20px;
+    border-radius: 5px;
+    padding: 10px;
+    
+    width: 50%;
+    
+    transition: .4s ease-in;
+    opacity: 0;
+    display: none;
+}
+.wrong {
+    background-color: #ff562218;
+    border: 1px solid #ff5722;
+}
+.currect {
+    background-color: #E2F7DC;
+    border: 1px solid #3F9726;
+}
+.answer-show {
+    display: flex;
+    opacity: 1;
+}
+
+.answer p {
+    font-size: 24px;
+    font-weight: 600;
+}
+.currect p {
+    color: #3F9726;
+}
+.wrong p {
+    color: #ff5722;
 }
 
 @media (max-width: 1200px) {

@@ -34,6 +34,13 @@
             </mat-form-field>
             <button mat-flat-button color="primary" (click)="answer(answerForm.value)" >Отправить</button>
           </form>
+          <!-- *ngIf="errorAnswer" -->
+          <div class="answer wrong" [ngClass]="{'answer-show': errorAnswer}">
+            <p>Ответ не верный</p>
+          </div>
+          <div class="answer currect" [ngClass]="{'answer-show': currectAnswer}">
+            <p>Ответ верный</p>
+          </div>
         </div>
     </mat-card>
 
