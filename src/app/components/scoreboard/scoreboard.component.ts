@@ -11,7 +11,7 @@ import { UserService } from '../../services/user.service';
 export class ScoreboardComponent implements OnInit {
 
   ELEMENT_DATA = [];
-  displayedColumns: string[] = ['position', 'name', 'quest', 'score'];
+  displayedColumns: string[] = ['position', 'name', 'questCount', 'score'];
   dataSource;
 
   @ViewChild(MatSort) sort: MatSort;
@@ -26,6 +26,7 @@ export class ScoreboardComponent implements OnInit {
   ngOnInit() {
     this.userService.getScoreBoard()
       .subscribe(res => {
+        console.log(res);
         this.isLoading = false;
         for (let i = 0, len = res.length; i < len; i++) {
           this.ELEMENT_DATA.push(res[i]);
