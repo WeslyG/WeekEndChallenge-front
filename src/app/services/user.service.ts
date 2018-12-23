@@ -12,8 +12,8 @@ import { QuestListModel } from '../models/questList.model';
 export class UserService {
     constructor(private endpointService: EndpointService) { }
 
-    getUser() {
-        return this.endpointService.getUserEndpoint('me').pipe(
+    getUser(id: string) {
+        return this.endpointService.getUserEndpoint(id).pipe(
             map((response: Response) => {
                 return <User>response.json();
             })

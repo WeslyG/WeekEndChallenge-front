@@ -59,8 +59,8 @@ export class LoginComponent implements OnInit {
   login(value: LoginModel) {
     this.isLoading = true;
     this.authService.login(value)
-      .subscribe(() => {
-        this.userService.getUser().subscribe(userData => {
+      .subscribe(res => {
+        this.userService.getUser(res).subscribe(userData => {
           this.authService.saveUserDetails(userData);
           this.snackBar.open('Привет, ' + this.authService.User.name + '!', 'Ok', {
             duration: 3500,
