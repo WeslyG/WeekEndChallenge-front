@@ -55,6 +55,21 @@ export class EndpointService {
     return this.http.get(`${environment.apiUrl}/quest`);
   }
 
+  answerQuest(questId, answer): Observable<Response> {
+    const header = new Headers();
+    const accessToken = this.localStorageService.getDataFromStorage(DbKeys.ID_TOKEN);
+    header.append('Content-Type', 'application/x-www-form-urlencoded');
+    header.append('Authorization', `Bearer ${accessToken}`);
+
+    const params = new URLSearchParams();
+    params.append('questId', questId);
+    params.append('answer', answer);
+    const body = params.toString();
+
+    return this.http.post(`${environment.apiUrl}/quest/answer`, body, { headers: header });
+  }
+
+
   private getAuthHeader(): RequestOptions {
     const accessToken = this.localStorageService.getDataFromStorage(DbKeys.ID_TOKEN);
     const headers = new Headers({ 'Authorization': 'Bearer ' + accessToken });

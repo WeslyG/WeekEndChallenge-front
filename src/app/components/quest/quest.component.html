@@ -32,7 +32,7 @@
                 Ответ <strong>не введен</strong>
               </mat-error>
             </mat-form-field>
-            <button mat-flat-button color="primary" routerLink="/">Отправить</button>
+            <button mat-flat-button color="primary" (click)="answer(answerForm.value)" >Отправить</button>
           </form>
         </div>
     </mat-card>

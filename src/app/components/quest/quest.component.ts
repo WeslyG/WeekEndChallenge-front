@@ -55,4 +55,21 @@ export class QuestComponent implements OnInit {
     this.location.back();
   }
 
+  answer(answer) {
+    this.isLoading = true;
+    const id = this.route.snapshot.paramMap.get('id');
+    this.questServices.answerQuest(id, answer.answer)
+      .subscribe(res => {
+          console.log(res);
+          if (res.message === true) {
+            this.isLoading = false;
+          }
+        },
+          (error: Response) => {
+            this.isLoading = false;
+            this.snackBar.open(error.text().toString(), 'Ok', {
+              duration: 3500,
+            });
+          });
+      }
 }
