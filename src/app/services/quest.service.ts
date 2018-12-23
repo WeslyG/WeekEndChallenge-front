@@ -16,7 +16,7 @@ export class QuestService {
     getOneQuest(id) {
         return this.endpointService.getOneQuest(id).pipe(
             map((response: Response) => {
-                return <QuestModel>response.json();
+                return response.json();
             })
         );
     }
