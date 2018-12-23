@@ -7,7 +7,6 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { QuestComponent } from './components/quest/quest.component';
 import { QuestListComponent } from './components/quest-list/quest-list.component';
 
-
 const routes: Routes = [
   {
     path: 'login',

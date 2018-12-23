@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
       .subscribe(() => {
         this.userService.getUser().subscribe(userData => {
           this.authService.saveUserDetails(userData);
-          this.snackBar.open('Hello, ' + this.authService.User.name + '!', 'Ok', {
+          this.snackBar.open('Привет, ' + this.authService.User.name + '!', 'Ok', {
             duration: 3500,
           });
           this.isLoading = false;

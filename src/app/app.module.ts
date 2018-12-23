@@ -8,7 +8,9 @@ import {
   MatSnackBarModule,
   MatListModule,
   MatProgressBarModule,
-  MatBadgeModule
+  MatBadgeModule,
+  MatTableModule,
+  MatSortModule
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -41,6 +43,8 @@ import { QuestListComponent } from './components/quest-list/quest-list.component
   ],
   imports: [
     BrowserModule,
+    MatTableModule,
+    MatSortModule,
     AppRoutingModule,
     CustomMaterialModule,
     HttpModule,
