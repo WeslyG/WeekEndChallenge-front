@@ -26,6 +26,18 @@ export class QuestListComponent implements OnInit {
   ngOnInit() {
     this.isLoading = true;
     this.isUserLogin = this.isLogin();
+    if (this.isUserLogin === true) {
+      this.questListServices.getQuestListAuth().subscribe(res => {
+        this.isLoading = false;
+        this.questList = res;
+      },
+        (error: Response) => {
+          this.isLoading = false;
+          this.snackBar.open(error.text(), 'Ok', {
+            duration: 3000,
+          });
+        });
+    } else {
     this.questListServices.getQuestList().subscribe(res => {
         this.isLoading = false;
         this.questList = res;
@@ -36,7 +48,9 @@ export class QuestListComponent implements OnInit {
           duration: 3000,
         });
       });
+    }
   }
+
   private isLogin() {
     if (this.localStorageService.getDataFromStorage(DbKeys.ID_TOKEN)) {
       return true;

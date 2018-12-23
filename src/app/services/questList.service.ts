@@ -19,4 +19,12 @@ export class QuestListService {
             })
         );
     }
+
+    getQuestListAuth() {
+        return this.endpointService.getQuestListAuth().pipe(
+            map((response: Response) => {
+                return response.json();
+            })
+        );
+    }
 }

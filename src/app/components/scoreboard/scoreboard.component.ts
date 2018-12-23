@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort, MatTableDataSource } from '@angular/material';
-import { QuestListModel } from 'src/app/models/questList.model';
 import { UserService } from '../../services/user.service';
 
 @Component({

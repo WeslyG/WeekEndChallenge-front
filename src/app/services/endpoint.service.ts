@@ -55,6 +55,10 @@ export class EndpointService {
     return this.http.get(`${environment.apiUrl}/quest`);
   }
 
+  getQuestListAuth(): Observable<Response> {
+    return this.http.get(`${environment.apiUrl}/quest/protected`, this.getAuthHeader());
+  }
+
   answerQuest(questId, answer): Observable<Response> {
     const header = new Headers();
     const accessToken = this.localStorageService.getDataFromStorage(DbKeys.ID_TOKEN);
