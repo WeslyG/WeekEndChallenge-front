@@ -1,23 +1,30 @@
 <div class="wrapper">
-  <div class="quest-container">
-    <div *ngFor="let tags of questList" class="tag">
+  <div class="container" *ngIf="questList">
+    <div class="quest-container">
+      <div *ngFor="let tags of questList" class="tag">
         <p class="title">
-            <span [matBadge]="tags.quests.length" matBadgeOverlap="false">{{ tags.tag }}</span>
+          <span [matBadge]="tags.quests.length" matBadgeOverlap="false">{{ tags.tag }}</span>
         </p>
         <div class="list-quest">
-            <mat-card *ngFor="let quest of tags.quests" class="card-quest">
-                <button mat-flat-button class="quest-wrapper" routerLink="/quest/{{quest.id}}">
-                    <div class="quest">
-                        <div class="quest-name">
-                            <p>{{ quest.name }}</p>
-                        </div>
-                        <div class="quest-price">
-                            <p color="primary">{{ quest.price }}</p>
-                        </div>
-                    </div>
-                </button>
-            </mat-card>
+          <mat-card *ngFor="let quest of tags.quests" class="card-quest">
+            <button mat-flat-button class="quest-wrapper" routerLink="/quest/{{quest.id}}">
+              <div class="quest">
+                <div class="quest-name">
+                  <p>{{ quest.name }}</p>
+                </div>
+                <div class="quest-price">
+                  <p color="primary">{{ quest.price }}</p>
+                </div>
+              </div>
+            </button>
+          </mat-card>
+        </div>
       </div>
     </div>
+  </div>
+
+  <div class="no-data-container" *ngIf="!questList">
+    <h1>Упс... Квестов еще нет.</h1>
+    <p>...но они скоро появятся</p>
   </div>
 </div>
