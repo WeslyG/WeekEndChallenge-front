@@ -26,17 +26,14 @@
 
 .user-info {
   display: flex;
-  justify-content: space-between;
+  margin-left: 20px;
   align-items: center;
-  flex-wrap: wrap;
-
-  width: calc(100% - 200px);
+  width: calc(100% - 180px);
 }
 .user-info h1 {
   text-transform: uppercase;
   font-weight: 200;
-
-  margin-left: 20px;
+  margin-bottom: 10px;
 }
 
 .user-info h2 {
@@ -58,7 +55,10 @@
   display: flex;
   align-items: baseline;
   justify-content: center;
-  margin-bottom: 20px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+
+  border-bottom: 1px solid #808080;
 }
 .count-quests h2 {
   font-weight: 200;
