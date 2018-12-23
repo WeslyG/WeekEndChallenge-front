@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { UserService } from '../../services/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -20,12 +21,14 @@ export class UserComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private route: ActivatedRoute,
     private snackBar: MatSnackBar,
   ) { }
 
   ngOnInit() {
     this.isLoading = true;
-    this.userService.getUser().subscribe(res => {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.userService.getUser(id).subscribe(res => {
       this.isLoading = false;
       this.user = {
         name: res.name,

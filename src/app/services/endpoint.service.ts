@@ -44,11 +44,7 @@ export class EndpointService {
   }
 
   getUserEndpoint(userId): Observable<Response> {
-    if (userId === 'me') {
-      return this.http.get(`${environment.apiUrl}/user/me`, this.getAuthHeader());
-    } else {
       return this.http.get(`${environment.apiUrl}/user/${userId}`, this.getAuthHeader());
-    }
   }
 
   getScoreBoard(): Observable<Response> {
