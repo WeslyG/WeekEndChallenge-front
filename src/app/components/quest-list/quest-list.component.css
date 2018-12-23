@@ -68,3 +68,7 @@ p {
     align-items: center;
     opacity: .4;
 }
+
+.mat-flat-button[disabled][disabled] {
+    background: none;
+}

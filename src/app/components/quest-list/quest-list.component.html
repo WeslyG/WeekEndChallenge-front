@@ -7,7 +7,7 @@
         </p>
         <div class="list-quest">
           <mat-card *ngFor="let quest of tags.quests" class="card-quest">
-            <button mat-flat-button class="quest-wrapper" routerLink="/quest/{{quest.id}}">
+            <button mat-flat-button class="quest-wrapper" [disabled]="!isUserLogin" routerLink="/quest/{{quest.id}}">
               <div class="quest">
                 <div class="quest-name">
                   <p>{{ quest.name }}</p>
