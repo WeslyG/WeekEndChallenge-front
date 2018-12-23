@@ -29,8 +29,8 @@ export class QuestComponent implements OnInit {
     description: ''
   };
 
-  private errorAnswer: Boolean = false;
-  private currectAnswer: Boolean = false;
+  errorAnswer: Boolean = false;
+  currectAnswer: Boolean = false;
   completed: Boolean = false;
 
   ngOnInit() {
