@@ -34,7 +34,6 @@ export class UserComponent implements OnInit {
         questCount: res.questCount,
         quests: res.quests
       };
-      console.log(this.user);
     },
       (error: Response) => {
         this.isLoading = false;

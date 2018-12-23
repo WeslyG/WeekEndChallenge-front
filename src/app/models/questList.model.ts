@@ -1,13 +1,15 @@
 export class QuestListModel {
-    constructor(id?, name?, description?: string, price?: number) {
+    constructor(id?, name?, position?, score?, questCount?: number) {
         this.id = id;
         this.name = name;
-        this.description = description;
-        this.price = price;
+        this.position = position;
+        this.score = score;
+        this.questCount = questCount;
     }
 
     id: string;
     name: string;
-    description: string;
-    price: number;
+    position: number;
+    score: number;
+    questCount: number;
 }

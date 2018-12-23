@@ -51,6 +51,10 @@ export class EndpointService {
     }
   }
 
+  getScoreBoard(): Observable<Response> {
+    return this.http.get(`${environment.apiUrl}/user/list`);
+  }
+
   getQuestList(): Observable<Response> {
     return this.http.get(`${environment.apiUrl}/quest`);
   }
