@@ -17,3 +17,6 @@ table {
     margin-top: 3%;
     width: 80%;
 }
+.no-data-container {
+  opacity: .4;
+}
