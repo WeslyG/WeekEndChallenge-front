@@ -1,41 +1,34 @@
 <div class="box">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
-  <div class="no-data-container" *ngIf="ELEMENT_DATA.length == 0">
-    <h1>Тут еще никого нет!</h1>
-    <p>...но все скоро придут</p>
+      <ng-container matColumnDef="position" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>№</th>
+        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Имя </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-button routerLink="/user/{{element.id}}">{{element.name}}</button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="questCount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Выполнено квестов </th>
+        <td mat-cell *matCellDef="let element"> {{1*element.questCount}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="score">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Счет </th>
+        <td mat-cell *matCellDef="let element"> {{element.score}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    
+   <div class="no-data-container" *ngIf="ELEMENT_DATA.length === 0">
+    <h1>Упс... Пользователей еще нет.</h1>
+    <p>...но они скоро появятся</p>
   </div>
-
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" *ngIf="ELEMENT_DATA.length > 0">
-
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>№</th>
-    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Имя </th>
-    <td mat-cell *matCellDef="let element">
-      <div *ngIf="isUserLogin">
-        <button mat-button routerLink="/user/{{element.id}}">{{element.name}}</button>
-      </div>
-      <div *ngIf="!isUserLogin">
-        <button mat-button>{{element.name}}</button>
-      </div>
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="questCount">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Выполнено квестов </th>
-    <td mat-cell *matCellDef="let element"> {{1*element.questCount}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="score">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Счет </th>
-    <td mat-cell *matCellDef="let element"> {{element.score}} </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-
 </div>

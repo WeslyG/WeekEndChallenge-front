@@ -1,5 +1,6 @@
 .box {
   display: flex;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: center;
 }
@@ -18,5 +19,6 @@ table {
     width: 80%;
 }
 .no-data-container {
+  display: block;
   opacity: .4;
 }
