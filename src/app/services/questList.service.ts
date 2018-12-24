@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { EndpointService } from './endpoint.service';
-import { QuestListModel } from '../models/questList.model';
 import { map } from 'rxjs/operators';
 import { Response } from '@angular/http';
 

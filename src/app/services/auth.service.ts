@@ -2,7 +2,7 @@ import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { EndpointService } from './endpoint.service';
 import { LocalStorageService } from './localStorage.service';
-import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
+import { Response } from '@angular/http';
 import { LoginModel } from '../models/loginModel';
 import { User } from '../models/user.model';
 import { DbKeys } from './db-keys.service';

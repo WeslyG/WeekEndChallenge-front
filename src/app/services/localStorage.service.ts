@@ -16,11 +16,6 @@ export class LocalStorageService {
         localStorage.setItem(key, value);
     }
 
-    // clearLocalStorage() {
-        // localStorage.removeItem('AuthToken');
-        // localStorage.clear();
-    // }
-
     clearStorage() {
         localStorage.removeItem(DbKeys.ID_TOKEN);
         localStorage.removeItem(DbKeys.USER);

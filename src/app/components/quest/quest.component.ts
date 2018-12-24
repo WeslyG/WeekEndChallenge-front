@@ -67,7 +67,6 @@ export class QuestComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.questServices.answerQuest(id, answer.answer)
       .subscribe(res => {
-          console.log(res);
           if (res.message === true) {
             this.currectAnswer = true;
           } else {

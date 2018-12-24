@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { Router  } from '@angular/router';
 import { LocalStorageService } from './services/localStorage.service';
 import { DbKeys } from './services/db-keys.service';
+import { RouteService } from './services/route.service';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +15,8 @@ export class AppComponent {
 
   constructor(
     private localStorageService: LocalStorageService,
+    private router: Router,
+    private routerService: RouteService
   ) {}
 
   public isLogin() {
@@ -29,6 +33,10 @@ export class AppComponent {
   }
 
   public logout() {
+    if (this.router.url === '/user/me') {
+      this.routerService.redirectTo('/');
+      this.localStorageService.clearStorage();
+    }
     this.localStorageService.clearStorage();
   }
 }
