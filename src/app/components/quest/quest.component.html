@@ -17,10 +17,9 @@
           <h2>{{quest.name}}</h2>
           <h3>{{quest.price}}</h3>
         </div>
-
-        <!-- Здесь можно добавить картинки и прочее -->
         <div class="description">
-          <p>{{ quest.description}}</p>
+          <!-- <p></p> -->
+          <div [innerHTML]="quest.description"></div>
         </div>
 
         <!-- Форма отправки ответа -->
