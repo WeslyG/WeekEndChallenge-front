@@ -3,6 +3,10 @@
   max-width: 1000px;
   margin: 0 auto;
 }
+.spinner {
+  margin: 0 auto;
+  margin-top: 60px;
+}
 .quest-container {
   display: flex;
   flex-wrap: wrap;

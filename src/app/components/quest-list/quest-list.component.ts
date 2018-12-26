@@ -13,6 +13,7 @@ import { DbKeys } from 'src/app/services/db-keys.service';
 export class QuestListComponent implements OnInit {
 
   private isUserLogin: Boolean = false;
+  noneQuest: boolean = false;
 
   constructor(
     private questListServices: QuestListService,
@@ -30,6 +31,9 @@ export class QuestListComponent implements OnInit {
       this.questListServices.getQuestListAuth().subscribe(res => {
         this.isLoading = false;
         this.questList = res;
+        if (this.questList.length === 0) {
+          this.noneQuest = true
+        }
       },
         (error: Response) => {
           this.isLoading = false;

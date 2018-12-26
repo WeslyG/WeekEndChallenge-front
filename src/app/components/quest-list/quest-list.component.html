@@ -1,4 +1,5 @@
 <div class="wrapper">
+  <mat-spinner *ngIf="isLoading" class="spinner"></mat-spinner>
   <div class="container" *ngIf="questList">
     <div class="quest-container">
       <div *ngFor="let tags of questList" class="tag">
@@ -23,7 +24,7 @@
     </div>
   </div>
 
-<div class="no-data-container" *ngIf="questList.length === 0">
+<div class="no-data-container" *ngIf="noneQuest">
     <h1>Упс... Квестов еще нет.</h1>
     <p>...но они скоро появятся</p>
   </div>
