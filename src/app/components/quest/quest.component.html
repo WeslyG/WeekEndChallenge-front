@@ -31,7 +31,7 @@
                 Ответ <strong>не введен</strong>
               </mat-error>
             </mat-form-field>
-            <button mat-flat-button color="primary" (click)="answer(answerForm.value)" >Отправить</button>
+            <button mat-flat-button color="primary" (click)="answer(answerForm.value)" [disabled]="isLoading">Отправить</button>
           </form>
 
           <div class="answer wrong" [ngClass]="{'answer-show': errorAnswer}">
