@@ -23,10 +23,10 @@
         </div>
 
         <!-- Форма отправки ответа -->
-        <div class="form-container">
+        <div class="form-container" [style.display]="!isLoading ? '' : 'none'">
           <form class="form" [formGroup]="answerForm" *ngIf="!completed " [ngClass]="{'hide': currectAnswer}">
             <mat-form-field class="full-width" appearance="outline">
-              <input matInput placeholder="Ответ" formControlName="answer">
+              <input matInput placeholder="Ответ" formControlName="answer" >
               <mat-error *ngIf="!answerForm.hasError('required')">
                 Ответ <strong>не введен</strong>
               </mat-error>
