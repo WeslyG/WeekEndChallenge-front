@@ -64,9 +64,13 @@ export class QuestComponent implements OnInit {
 
   answer(answer) {
     this.isLoading = true;
+    // обнуляем предыдущее состояние ответа
+    this.currectAnswer = false;
+    this.errorAnswer = false;
     const id = this.route.snapshot.paramMap.get('id');
     this.questServices.answerQuest(id, answer.answer)
       .subscribe(res => {
+          // получаем новое состояние ответа
           if (res.message === true) {
             this.currectAnswer = true;
           } else {
