@@ -14,6 +14,7 @@ export class ScoreboardComponent implements OnInit {
 
   private isUserLogin: Boolean = false;
 
+  isNoneUser: Boolean = false;
   ELEMENT_DATA = [];
   displayedColumns: string[] = ['position', 'name', 'questCount', 'score'];
   dataSource;
@@ -38,6 +39,9 @@ export class ScoreboardComponent implements OnInit {
         }
         this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
         this.dataSource.sort = this.sort;
+        if (this.ELEMENT_DATA.length === 0) {
+          this.isNoneUser = true;
+        }
     },
 
       (error: Response) => {
