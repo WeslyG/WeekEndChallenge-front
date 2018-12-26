@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class UserComponent implements OnInit {
+  isNoneQuest: Boolean = false;
   isLoading = false;
   user = {
     name: '',
@@ -37,6 +38,9 @@ export class UserComponent implements OnInit {
         questCount: res.questCount,
         quests: res.quests
       };
+      if (this.user.quests.length === 0) {
+        this.isNoneQuest = true;
+      }
     },
       (error: Response) => {
         this.isLoading = false;
