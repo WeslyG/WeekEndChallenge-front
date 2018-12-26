@@ -115,3 +115,17 @@ h3::after {
         padding-top: 60px;
     }
 }
+@media (max-width: 480px) {
+  .form-container {
+    flex-direction: column;
+  }
+  .form {
+    width: 100%;
+  }
+  .wrong {
+    margin-left: 0;
+  }
+  .answer {
+    width: unset;
+  }
+}
