@@ -68,7 +68,6 @@ h3::after {
     
     transition: .4s ease-in;
     opacity: 0;
-    display: none;
 }
 .wrong {
     background-color: #ff562218;
