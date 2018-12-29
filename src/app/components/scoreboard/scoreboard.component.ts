@@ -12,8 +12,7 @@ import { DbKeys } from 'src/app/services/db-keys.service';
 
 export class ScoreboardComponent implements OnInit {
 
-  private isUserLogin: Boolean = false;
-
+  isUserLogin: Boolean = false;
   isNoneUser: Boolean = false;
   ELEMENT_DATA = [];
   displayedColumns: string[] = ['position', 'name', 'questCount', 'score'];
