@@ -22,3 +22,9 @@ table {
   display: block;
   opacity: .4;
 }
+
+@media (max-width: 400px) {
+    table {
+        transform: scale(0.7);
+    }
+}
