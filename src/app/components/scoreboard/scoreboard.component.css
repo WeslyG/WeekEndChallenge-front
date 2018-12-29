@@ -26,5 +26,13 @@ table {
 @media (max-width: 400px) {
     table {
         transform: scale(0.7);
+        position: absolute;
+        left: 0;
+        top: 15px;
+    }
+    .box {
+        position: relative;
+        width: 100%;
+        height: 100%;
     }
 }
