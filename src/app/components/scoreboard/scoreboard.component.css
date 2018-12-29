@@ -18,9 +18,14 @@ table {
     margin-top: 3%;
     width: 80%;
 }
+
 .no-data-container {
   display: block;
   opacity: .4;
+}
+
+.black-text {
+  color: #000000de !important;
 }
 
 @media (max-width: 400px) {
